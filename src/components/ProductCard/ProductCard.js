@@ -1,67 +1,83 @@
 import React from 'react'
 import styled from 'styled-components'
 import Balancer from 'react-wrap-balancer'
+import { QUERIES } from '../../constants'
 
-function ProductCard({ title, subtitle, price, image, description }) {
+function ProductCard({ title, subtitle, price, image, description, category }) {
     return (
         <Wrapper>
-            <Title>{title}</Title>
-            <PriceWrapper>
-                <Price>MYR{price}</Price>
-            </PriceWrapper>
+            <TopWrapper>
+                <Title>{title}</Title>
+                {/* <span>{category.symbol}</span> */}
+            </TopWrapper>
             <ImageWrapper>
                 <Image
                     src={`products/${image}.jpg`}
                     alt={`cover photo for ${title}`}
                 ></Image>
             </ImageWrapper>
-
-            <Balancer>
-                <Subtitle>→ {subtitle}</Subtitle>
-            </Balancer>
+            <BottomWrapper>
+                <SubtitleWrapper>
+                    <Balancer>
+                        <Subtitle>{subtitle}</Subtitle>
+                    </Balancer>
+                </SubtitleWrapper>
+                <Price>MYR{price}</Price>
+            </BottomWrapper>
         </Wrapper>
     )
 }
 
 const Wrapper = styled.div`
-    grid-column: span 3;
-
     display: flex;
     flex-direction: column;
+    padding: 1rem;
+`
 
-    border-radius: 2rem;
-    padding: 2rem 1rem;
-
-    position: relative;
+const TopWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
 `
 
 const Title = styled.h2`
-    font-weight: normal;
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding-block-end: 14px;
 `
-const Subtitle = styled.h3`
-    align-self: center;
-    font-weight: normal;
+const ImageWrapper = styled.div`
+    padding-block-end: 14px;
 `
-const ImageWrapper = styled.div``
 const Image = styled.img`
     width: 100%;
     height: 100%;
 `
-const PriceWrapper = styled.div`
-    position: absolute;
-    bottom: 20%;
-    left: 0%;
-
-    padding-inline: 12px;
-    padding-block: 8px;
-
-    background-color: #e4ff5f;
-    border-radius: 0.2em;
+const BottomWrapper = styled.div`
+    width: 100%;
+    height: 100px;
 
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media ${QUERIES.tabletAndDown} {
+        height: revert;
+    }
 `
-const Price = styled.p``
+
+const SubtitleWrapper = styled.div``
+
+const Subtitle = styled.h3`
+    font-size: 1.8rem;
+    font-weight: 300;
+    padding-block-end: 4px;
+    line-height: 1;
+    letter-spacing: -2%;
+`
+const Price = styled.p`
+    font-size: 1.2rem;
+    letter-spacing: 2%;
+    font-weight: 300;
+`
 const Description = styled.p``
+
 export default ProductCard

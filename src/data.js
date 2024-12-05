@@ -1,12 +1,15 @@
 export const CATEGORY = {
-    ALPHA: { name: 'ALPHABETS' },
-    NUM: { name: 'NUMBERS' },
-    ARROW: { name: 'ARROWS' },
-    SMILEY: { name: 'SMILEYS' },
-    REWARD: { name: 'REWARDS' },
-    DECO: { name: 'DECO' },
-    INDEX: { name: 'INDEX' },
-    LABEL: { name: 'LABELS' },
+    ALPHA: {
+        name: 'ALPHABET',
+        symbol: '🔤',
+    },
+    NUM: { name: 'NUMBER', symbol: '🔢' },
+    ARROW: { name: 'ARROW', symbol: '➡️' },
+    SMILEY: { name: 'SMILEY', symbol: '😃' },
+    REWARD: { name: 'REWARD', symbol: '⭐︎' },
+    DECO: { name: 'DECO', symbol: '💘' },
+    INDEX: { name: 'INDEX', symbol: '🗂️' },
+    LABEL: { name: 'LABEL', symbol: '🏷️' },
 }
 
 export const PRODUCTS = [
