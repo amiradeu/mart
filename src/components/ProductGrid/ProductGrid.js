@@ -8,9 +8,11 @@ import ProductCard from '../ProductCard/ProductCard'
 function ProductGrid() {
     return (
         <Wrapper>
-            {PRODUCTS.map((product, index) => {
-                return <ProductCard key={index} {...product} />
-            })}
+            {PRODUCTS.map((product, index) => (
+                <ProductWrapper>
+                    <ProductCard key={index} {...product} />
+                </ProductWrapper>
+            ))}
         </Wrapper>
     )
 }
@@ -20,7 +22,14 @@ const Wrapper = styled.div`
     min-height: 100%;
 
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
     gap: 1rem;
+`
+
+const ProductWrapper = styled.div`
+    min-width: 360px;
+    flex: 1;
 `
 export default ProductGrid

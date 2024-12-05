@@ -4,7 +4,7 @@ import styled from 'styled-components'
 function Header() {
     return (
         <MainHeader>
-            <h1>Sticker Mart</h1>
+            <Title>Sticker Mart</Title>
             <AuthorLink href='https://www.instagram.com/amiradeuraseh/'>
                 by AmiraDeuraseh
             </AuthorLink>
@@ -20,6 +20,10 @@ const MainHeader = styled.div`
     justify-content: center;
 
     padding-block: 2em;
+`
+
+const Title = styled.h1`
+    font-size: 4rem;
 `
 
 const AuthorLink = styled.a`

@@ -2,12 +2,15 @@ import styled from 'styled-components'
 
 import Header from '../Header'
 import ProductGrid from '../ProductGrid'
+import MaxWidthWrapper from '../MaxWidthWrapper'
 
 function Home() {
     return (
         <Wrapper>
             <Header />
-            <ProductGrid />
+            <MaxWidthWrapper>
+                <ProductGrid />
+            </MaxWidthWrapper>
         </Wrapper>
     )
 }
