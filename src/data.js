@@ -65,6 +65,16 @@ export const PRODUCTS = [
         image: 'num06',
         category: CATEGORY.NUM,
         description: '',
+        variation: [
+            {
+                name: 'Red',
+                image: 'num06',
+            },
+            {
+                name: 'Orange',
+                image: 'num06',
+            },
+        ],
     },
     {
         title: 'ARROW 01',

@@ -7,7 +7,7 @@ function ProductCard({ title, subtitle, price, image, description }) {
         <Wrapper>
             <Title>{title}</Title>
             <PriceWrapper>
-                <Price>RM{price}</Price>
+                <Price>MYR{price}</Price>
             </PriceWrapper>
             <ImageWrapper>
                 <Image
@@ -29,7 +29,6 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
 
-    border: 1px solid white;
     border-radius: 2rem;
     padding: 2rem 1rem;
 
@@ -50,14 +49,14 @@ const Image = styled.img`
 `
 const PriceWrapper = styled.div`
     position: absolute;
-    top: 2%;
-    right: 10%;
+    bottom: 20%;
+    left: 0%;
 
-    width: 64px;
-    height: 64px;
+    padding-inline: 12px;
+    padding-block: 8px;
 
-    background-color: yellow;
-    border-radius: 50%;
+    background-color: #e4ff5f;
+    border-radius: 0.2em;
 
     display: flex;
     align-items: center;

@@ -22,7 +22,7 @@ html, body, #root {
 }
 
 body {
-	  background: #F4F3F1;
+	  background: #E6FDFC;
     color: var(--color-primary);
     font-family: 'Work Sans', Arial, Helvetica, sans-serif;
 }
