@@ -16,6 +16,7 @@ export const PRODUCTS = [
         price: 20,
         image: 'alpha01',
         category: CATEGORY.ALPHA,
+        quantity: 7,
         description: '',
     },
     {
@@ -24,6 +25,7 @@ export const PRODUCTS = [
         price: 20,
         image: 'num01',
         category: CATEGORY.NUM,
+        quantity: 6,
         description: '',
     },
     {
@@ -32,6 +34,7 @@ export const PRODUCTS = [
         price: 15,
         image: 'num02',
         category: CATEGORY.NUM,
+        quantity: 23,
         description: '',
     },
     {
@@ -40,6 +43,7 @@ export const PRODUCTS = [
         price: 7,
         image: 'num03',
         category: CATEGORY.NUM,
+        quantity: 23,
         description: '',
     },
     {
@@ -48,6 +52,7 @@ export const PRODUCTS = [
         price: 14,
         image: 'num04',
         category: CATEGORY.NUM,
+        quantity: 22,
         description: '',
     },
     {
@@ -56,6 +61,7 @@ export const PRODUCTS = [
         price: 15,
         image: 'num05',
         category: CATEGORY.NUM,
+        quantity: 23,
         description: '',
     },
     {
@@ -64,40 +70,34 @@ export const PRODUCTS = [
         price: 1,
         image: 'num06',
         category: CATEGORY.NUM,
+        quantity: 10,
         description: '',
-        variation: [
-            {
-                name: 'Red',
-                image: 'num06',
-            },
-            {
-                name: 'Orange',
-                image: 'num06',
-            },
-        ],
     },
     {
         title: 'ARROW 01',
         subtitle: 'Fluorescent Arrow',
-        price: 25,
+        price: 7,
         image: 'arrow01',
         category: CATEGORY.ARROW,
+        quantity: 20,
         description: '',
     },
     {
         title: 'ARROW 02',
         subtitle: 'Classic Arrow',
-        price: 20,
+        price: 16,
         image: 'arrow02',
         category: CATEGORY.ARROW,
+        quantity: 20,
         description: '',
     },
     {
         title: 'ARROW 03',
         subtitle: 'Quads Arrow',
-        price: 10,
+        price: 21,
         image: 'arrow03',
         category: CATEGORY.ARROW,
+        quantity: 20,
         description: '',
     },
     {
@@ -106,6 +106,7 @@ export const PRODUCTS = [
         price: 30,
         image: 'smiley01',
         category: CATEGORY.SMILEY,
+        quantity: 24,
         description: '',
     },
     {
@@ -114,6 +115,7 @@ export const PRODUCTS = [
         price: 15,
         image: 'smiley02',
         category: CATEGORY.SMILEY,
+        quantity: 28,
         description: '',
     },
     {
@@ -122,33 +124,44 @@ export const PRODUCTS = [
         price: 10,
         image: 'smiley03',
         category: CATEGORY.SMILEY,
+        quantity: 14,
         description: '',
     },
     {
-        title: 'SMILEY 04',
+        title: 'SMILEY 4.1',
         subtitle: 'Special Smileys',
         price: 2,
-        image: 'smiley04',
+        image: 'smiley04-i',
         category: CATEGORY.SMILEY,
+        quantity: 40,
         description: '',
-        variation: [
-            {
-                name: 'SMILEY 4.1',
-                image: 'smiley04-i',
-            },
-            {
-                name: 'SMILEY 4.2',
-                image: 'smiley04-ii',
-            },
-            {
-                name: 'SMILEY 4.3',
-                image: 'smiley04-iii',
-            },
-            {
-                name: 'SMILEY 4.4',
-                image: 'smiley04-iv',
-            },
-        ],
+    },
+    {
+        title: 'SMILEY 4.2',
+        subtitle: 'Special Smileys',
+        price: 2,
+        image: 'smiley04-ii',
+        category: CATEGORY.SMILEY,
+        quantity: 8,
+        description: '',
+    },
+    {
+        title: 'SMILEY 4.3',
+        subtitle: 'Special Smileys',
+        price: 2,
+        image: 'smiley04-iii',
+        category: CATEGORY.SMILEY,
+        quantity: 7,
+        description: '',
+    },
+    {
+        title: 'SMILEY 4.4',
+        subtitle: 'Special Smileys',
+        price: 2,
+        image: 'smiley04-iv',
+        category: CATEGORY.SMILEY,
+        quantity: 8,
+        description: '',
     },
     {
         title: 'DECO 01',
@@ -156,6 +169,7 @@ export const PRODUCTS = [
         price: 30,
         image: 'deco01',
         category: CATEGORY.DECO,
+        quantity: 18,
         description: '',
     },
     {
@@ -164,6 +178,7 @@ export const PRODUCTS = [
         price: 5,
         image: 'deco02',
         category: CATEGORY.DECO,
+        quantity: 20,
         description: '',
     },
     {
@@ -172,6 +187,7 @@ export const PRODUCTS = [
         price: 10,
         image: 'index01',
         category: CATEGORY.INDEX,
+        quantity: 12,
         description: '',
     },
     {
@@ -180,6 +196,7 @@ export const PRODUCTS = [
         price: 5,
         image: 'index02',
         category: CATEGORY.INDEX,
+        quantity: 6,
         description: '',
     },
     {
@@ -188,6 +205,7 @@ export const PRODUCTS = [
         price: 12,
         image: 'label01',
         category: CATEGORY.LABEL,
+        quantity: 6,
         description: '',
     },
     {
@@ -196,6 +214,7 @@ export const PRODUCTS = [
         price: 10,
         image: 'label02',
         category: CATEGORY.LABEL,
+        quantity: 20,
         description: '',
     },
 ]
