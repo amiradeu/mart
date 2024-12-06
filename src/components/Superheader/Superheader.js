@@ -21,7 +21,7 @@ function Superheader() {
                     <Content key={index} ref={contentRef}>
                         <span>Free Palestine </span>
                         <ArrowUpRight size={14} />
-                        <Donate>We donate 10% to support the cause</Donate>
+                        <Donate>10% goes to Donation</Donate>
                     </Content>
                 ))}
             </Marquee>
