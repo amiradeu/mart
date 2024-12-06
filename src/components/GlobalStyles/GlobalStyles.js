@@ -5,8 +5,10 @@ const GlobalStyles = createGlobalStyle`
 /* DESIGN TOKENS */
 html {
   --color-primary: #262626;
+  --color-white: #f6f6f6;
   --color-gray-100: rgba(0, 0, 0, 0.015);
   --color-gray-200: rgba(0, 0, 0, 0.1);
+  --color-background: #eeede9; // #F2F2F2;
 }
 
 /* GLOBAL STYLES */
@@ -24,7 +26,7 @@ html, body, #root {
 }
 
 body {
-	  background: #F2F2F2;
+	  background: var(--color-background);
     color: var(--color-primary);
     font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
 
