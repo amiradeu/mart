@@ -9,8 +9,8 @@ function ProductGrid() {
     return (
         <Wrapper>
             {PRODUCTS.map((product, index) => (
-                <ProductWrapper>
-                    <ProductCard key={index} {...product} />
+                <ProductWrapper key={index}>
+                    <ProductCard {...product} />
                 </ProductWrapper>
             ))}
         </Wrapper>
