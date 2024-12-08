@@ -107,11 +107,20 @@ export const PRODUCTS = [
     },
     {
         title: 'NUM 06',
-        subtitle: 'Outline Circle Numbers 1-50',
+        subtitle: 'Outline Circle Numbers 1-50 (Red)',
         price: 1,
         image: 'num06',
         category: CATEGORY.NUM,
         quantity: 10,
+        description: '',
+    },
+    {
+        title: 'NUM 06',
+        subtitle: 'Outline Circle Numbers 1-50 (Orange)',
+        price: 1,
+        image: 'num06',
+        category: CATEGORY.NUM,
+        quantity: 3,
         description: '',
     },
     {

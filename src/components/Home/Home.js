@@ -15,11 +15,13 @@ function Home() {
         <Wrapper>
             <Superheader />
             {/* <Header /> */}
-            <CategoryFilter
-                category={selectedCategory}
-                onChange={setSelectedCategory}
-            />
-            <ProductGrid category={selectedCategory} />
+            <main>
+                <CategoryFilter
+                    category={selectedCategory}
+                    onChange={setSelectedCategory}
+                />
+                <ProductGrid category={selectedCategory} />
+            </main>
         </Wrapper>
     )
 }
