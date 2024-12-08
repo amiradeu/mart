@@ -106,7 +106,7 @@ export const PRODUCTS = [
         description: '',
     },
     {
-        title: 'NUM 06',
+        title: 'NUM 6.1',
         subtitle: 'Outline Circle Numbers 1-50 (Red)',
         price: 1,
         image: 'num06',
@@ -115,7 +115,7 @@ export const PRODUCTS = [
         description: '',
     },
     {
-        title: 'NUM 06',
+        title: 'NUM 6.2',
         subtitle: 'Outline Circle Numbers 1-50 (Orange)',
         price: 1,
         image: 'num06',

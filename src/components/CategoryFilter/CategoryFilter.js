@@ -63,8 +63,9 @@ const Radio = styled.input.attrs({ type: 'radio' })`
     transition: 0.2s all linear;
 
     &:checked + label {
-        background-color: black;
-        color: white;
+        border-color: black;
+        background-color: var(--color-secondary);
+        color: black;
     }
 `
 

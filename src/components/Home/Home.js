@@ -6,6 +6,7 @@ import Header from '../Header'
 import ProductGrid from '../ProductGrid'
 
 import CategoryFilter from '../CategoryFilter/CategoryFilter'
+import Cart from '../Cart/Cart'
 
 function Home() {
     const [selectedCategory, setSelectedCategory] = useState('ALL')
@@ -14,14 +15,15 @@ function Home() {
     return (
         <Wrapper>
             <Superheader />
-            {/* <Header /> */}
-            <main>
+            <Header />
+            <Main>
                 <CategoryFilter
                     category={selectedCategory}
                     onChange={setSelectedCategory}
                 />
                 <ProductGrid category={selectedCategory} />
-            </main>
+            </Main>
+            {/* <Cart /> */}
         </Wrapper>
     )
 }
@@ -29,5 +31,9 @@ function Home() {
 const Wrapper = styled.div`
     padding-block-start: 50px;
     padding-block-end: 4rem;
+`
+
+const Main = styled.main`
+    padding-block-start: 1rem;
 `
 export default Home

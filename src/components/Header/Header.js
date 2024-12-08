@@ -1,39 +1,57 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import { QUERIES } from '../../constants'
 
 function Header() {
+    const [cartNumber, setCartNumber] = useState(0)
+
     return (
-        <MainHeader>
+        <Wrapper>
             <Title>Sticker Mart</Title>
-            <AuthorLink href='https://www.instagram.com/amiradeuraseh/'>
-                by AmiraDeuraseh
-            </AuthorLink>
-        </MainHeader>
+            <Cart>
+                Cart
+                {cartNumber !== 0 ? `(${cartNumber})` : ''}
+            </Cart>
+        </Wrapper>
     )
 }
 
-const MainHeader = styled.div`
-    display: flex;
+const Wrapper = styled.div`
+    z-index: 10;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: var(--color-background);
+    border-bottom: 1px solid black;
 
+    display: flex;
     gap: 1em;
 
     align-items: baseline;
-    justify-content: center;
 
-    padding: 16px;
-
-    @media ${QUERIES.tabletAndDown} {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+    padding: 0px 32px;
 `
 
 const Title = styled.h1`
-    font-size: 4rem;
+    font-size: 1rem;
     line-height: 1;
     letter-spacing: -2%;
+
+    margin-right: auto;
+`
+const Nav = styled.nav``
+
+const Cart = styled.button`
+    padding: 16px 16px;
+    background-color: transparent;
+    color: inherit;
+    font-size: 16px;
+    margin-left: auto;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
 `
 
 const AuthorLink = styled.a`

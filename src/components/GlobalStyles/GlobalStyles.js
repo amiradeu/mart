@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
 /* DESIGN TOKENS */
 html {
   --color-primary: #262626;
+  --color-secondary: #E4FF5F;
   --color-white: #f6f6f6;
   --color-gray-100: rgba(0, 0, 0, 0.015);
   --color-gray-200: rgba(0, 0, 0, 0.1);
