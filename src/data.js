@@ -1,4 +1,42 @@
-export const CATEGORY = {
+export const CATEGORIES = [
+    {
+        id: 'ALPHA',
+        name: 'ALPHABET',
+        symbol: '🔤',
+    },
+    {
+        id: 'NUM',
+        name: 'NUMBER',
+        symbol: '🔢',
+    },
+    {
+        id: 'ARROW',
+        name: 'ARROW',
+        symbol: '➡️',
+    },
+    {
+        id: 'SMILEY',
+        name: 'SMILEY',
+        symbol: '😃',
+    },
+    {
+        id: 'DECO',
+        name: 'DECO',
+        symbol: '💘',
+    },
+    {
+        id: 'INDEX',
+        name: 'INDEX',
+        symbol: '🗂️',
+    },
+    {
+        id: 'LABEL',
+        name: 'LABEL',
+        symbol: '🏷️',
+    },
+]
+
+const CATEGORY = {
     ALPHA: {
         name: 'ALPHABET',
         symbol: '🔤',
