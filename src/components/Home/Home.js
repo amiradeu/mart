@@ -1,23 +1,27 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 
-import MaxWidthWrapper from '../MaxWidthWrapper'
 import Superheader from '../Superheader'
 import Header from '../Header'
 import ProductGrid from '../ProductGrid'
 
-import { PRODUCTS } from '../../data'
-import { CATEGORY } from '../../data'
+import CategoryFilter from '../CategoryFilter/CategoryFilter'
 
 function Home() {
-    const [data, setData] = useState(PRODUCTS)
-    const [filter, setFilter] = useState('none')
+    const [selectedCategory, setSelectedCategory] = useState('ALL')
+    console.log(selectedCategory)
 
     return (
         <Wrapper>
             <Superheader />
-            <Header />
-            <ProductGrid />
+            {/* <Header /> */}
+            <main>
+                <CategoryFilter
+                    category={selectedCategory}
+                    onChange={setSelectedCategory}
+                />
+                <ProductGrid category={selectedCategory} />
+            </main>
         </Wrapper>
     )
 }

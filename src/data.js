@@ -1,4 +1,42 @@
-export const CATEGORY = {
+export const CATEGORIES = [
+    {
+        id: 'ALPHA',
+        name: 'ALPHABET',
+        symbol: '🔤',
+    },
+    {
+        id: 'NUM',
+        name: 'NUMBER',
+        symbol: '🔢',
+    },
+    {
+        id: 'ARROW',
+        name: 'ARROW',
+        symbol: '➡️',
+    },
+    {
+        id: 'SMILEY',
+        name: 'SMILEY',
+        symbol: '😃',
+    },
+    {
+        id: 'DECO',
+        name: 'DECO',
+        symbol: '💘',
+    },
+    {
+        id: 'INDEX',
+        name: 'INDEX',
+        symbol: '🗂️',
+    },
+    {
+        id: 'LABEL',
+        name: 'LABEL',
+        symbol: '🏷️',
+    },
+]
+
+const CATEGORY = {
     ALPHA: {
         name: 'ALPHABET',
         symbol: '🔤',
@@ -69,11 +107,20 @@ export const PRODUCTS = [
     },
     {
         title: 'NUM 06',
-        subtitle: 'Outline Circle Numbers 1-50',
+        subtitle: 'Outline Circle Numbers 1-50 (Red)',
         price: 1,
         image: 'num06',
         category: CATEGORY.NUM,
         quantity: 10,
+        description: '',
+    },
+    {
+        title: 'NUM 06',
+        subtitle: 'Outline Circle Numbers 1-50 (Orange)',
+        price: 1,
+        image: 'num06',
+        category: CATEGORY.NUM,
+        quantity: 3,
         description: '',
     },
     {
