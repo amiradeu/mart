@@ -44,12 +44,10 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
 
     justify-content: center;
-    gap: 4px;
+    gap: 16px 4px;
 
-    padding: 8px 0;
+    padding: 16px 0;
     border-radius: 2em;
-
-    margin-block: 8px;
 `
 
 const Group = styled.div``
