@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function Cart() {
+function SliderCart({ closeSlider }) {
     return (
         <Aside>
             <Wrapper>
                 <Header>
-                    <span>←</span>
                     <h3>My Cart</h3>
+                    <CloseButton onClick={closeSlider}>X</CloseButton>
                 </Header>
                 <Body>
                     <p>Your cart is currently empty.</p>
@@ -17,7 +17,7 @@ function Cart() {
                         <p>Subtotal</p>
                         <p>MYR</p>
                     </Total>
-                    <Button>checkout</Button>
+                    <CheckoutButton>checkout</CheckoutButton>
                 </Footer>
             </Wrapper>
         </Aside>
@@ -48,7 +48,23 @@ const Wrapper = styled.div`
 const Header = styled.header`
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 20px;
+`
+
+const CloseButton = styled.button`
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-secondary);
+    border: 1px solid black;
+    border-radius: 100%;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: black;
+        color: white;
+    }
 `
 
 const Body = styled.div`
@@ -65,7 +81,7 @@ const Total = styled.div`
     margin: 16px 0;
 `
 
-const Button = styled.button`
+const CheckoutButton = styled.button`
     width: 100%;
     padding: 16px 0px;
 
@@ -87,4 +103,4 @@ const Button = styled.button`
     }
 `
 
-export default Cart
+export default SliderCart

@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-function Header() {
+function Header({ onChange }) {
     const [cartNumber, setCartNumber] = useState(0)
 
     return (
         <Wrapper>
             <Title>Sticker Mart</Title>
-            <Cart>
+            <Cart onClick={onChange}>
                 Cart
                 {cartNumber !== 0 ? `(${cartNumber})` : ''}
             </Cart>
@@ -16,7 +16,7 @@ function Header() {
 }
 
 const Wrapper = styled.div`
-    z-index: 10;
+    z-index: 2;
     position: sticky;
     top: 0;
     left: 0;
