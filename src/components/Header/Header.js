@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 
-function Header({ onChange }) {
-    const [cartNumber, setCartNumber] = useState(0)
+import { CartContext } from '../CartProvider'
+
+function Header({ onCartClick }) {
+    const { totalCart } = useContext(CartContext)
 
     return (
         <Wrapper>
             <Title>Sticker Mart</Title>
-            <Cart onClick={onChange}>
+            <Cart onClick={onCartClick}>
                 Cart
-                {cartNumber !== 0 ? `(${cartNumber})` : ''}
+                {totalCart !== 0 ? `(${totalCart})` : ''}
             </Cart>
         </Wrapper>
     )

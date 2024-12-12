@@ -1,26 +1,20 @@
 import styled from 'styled-components'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import Superheader from '../Superheader'
 import Header from '../Header'
 import CategoryFilter from '../CategoryFilter'
 import ProductGrid from '../ProductGrid'
-import SliderCart from '../SliderCart'
+import CartShelf from '../CartShelf'
 
 function Home() {
     const [selectedCategory, setSelectedCategory] = useState('ALL')
-    const [cartOpen, setCartOpen] = useState(true)
-
-    const toggleCartOpen = () => {
-        setCartOpen((currentCartOpen) => !currentCartOpen)
-    }
-    console.log(selectedCategory)
 
     return (
         <Wrapper>
             <ContentWrapper>
                 <Superheader />
-                <Header onChange={toggleCartOpen} />
+                <Header />
                 <Main>
                     <CategoryFilter
                         category={selectedCategory}
@@ -30,7 +24,7 @@ function Home() {
                 </Main>
             </ContentWrapper>
             <SliderWrapper>
-                {cartOpen && <SliderCart closeSlider={toggleCartOpen} />}
+                <CartShelf />
             </SliderWrapper>
         </Wrapper>
     )

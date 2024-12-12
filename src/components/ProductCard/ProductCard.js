@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Balancer from 'react-wrap-balancer'
 import { QUERIES } from '../../constants'
 
-function ProductCard({ title, subtitle, price, image, description, category }) {
+import { CartContext } from '../CartProvider'
+
+function ProductCard({ title, subtitle, price, image, category, description }) {
+    const { addToCart } = useContext(CartContext)
+    // const { addToCart } = useContext(ToastContext)
+
+    const handleClick = () => {
+        addToCart({ title, subtitle, image, price })
+    }
+
     return (
         <Wrapper>
             <TopWrapper>
@@ -21,7 +30,7 @@ function ProductCard({ title, subtitle, price, image, description, category }) {
                     <Balancer>
                         <Subtitle>{subtitle}</Subtitle>
                     </Balancer>
-                    <Button>+</Button>
+                    <Button onClick={handleClick}>+</Button>
                 </SubtitleWrapper>
                 <Price>MYR{price}</Price>
             </BottomWrapper>

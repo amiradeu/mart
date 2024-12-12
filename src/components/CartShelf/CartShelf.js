@@ -1,23 +1,66 @@
-import React from 'react'
+import React, { memo, useContext, useRef, useState } from 'react'
 import styled from 'styled-components'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
-function SliderCart({ closeSlider }) {
+import { CartContext } from '../CartProvider'
+
+import Cart from '../Cart'
+
+function CartShelf() {
+    const asideRef = useRef()
+    const closeRef = useRef()
+    const checkoutRef = useRef()
+
+    const { cart } = useContext(CartContext)
+
+    useGSAP((context, contextSafe) => {
+        let tl = gsap.timeline()
+        tl.from(asideRef.current, {
+            x: '100%',
+            duration: 0.5,
+        })
+        tl.from(checkoutRef.current, {
+            y: '150%',
+            duration: 0.1,
+        })
+
+        const clickRestart = contextSafe(() => {
+            // console.log('reverse')
+            tl.restart()
+        })
+
+        const clickReverse = contextSafe(() => {
+            // console.log('reverse')
+            tl.reverse()
+        })
+
+        closeRef.current.addEventListener('click', clickReverse)
+
+        return () => {
+            closeRef.current.removeEventListener('click', clickReverse)
+        }
+    })
+
     return (
-        <Aside>
+        <Aside ref={asideRef}>
             <Wrapper>
                 <Header>
                     <h3>My Cart</h3>
-                    <CloseButton onClick={closeSlider}>X</CloseButton>
+                    <CloseButton ref={closeRef}>X</CloseButton>
                 </Header>
                 <Body>
-                    <p>Your cart is currently empty.</p>
+                    {cart.length === 0 && <p>Your cart is currently empty.</p>}
+                    {cart.map((item, index) => (
+                        <Cart key={index} {...item} />
+                    ))}
                 </Body>
                 <Footer>
                     <Total>
                         <p>Subtotal</p>
                         <p>MYR</p>
                     </Total>
-                    <CheckoutButton>checkout</CheckoutButton>
+                    <CheckoutButton ref={checkoutRef}>checkout</CheckoutButton>
                 </Footer>
             </Wrapper>
         </Aside>
@@ -69,6 +112,7 @@ const CloseButton = styled.button`
 
 const Body = styled.div`
     flex: 1;
+    overflow-y: scroll;
 `
 
 const Footer = styled.div`
@@ -103,4 +147,4 @@ const CheckoutButton = styled.button`
     }
 `
 
-export default SliderCart
+export default memo(CartShelf)
