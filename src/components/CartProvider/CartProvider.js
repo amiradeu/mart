@@ -3,13 +3,28 @@ import React, { createContext, useCallback, useMemo, useState } from 'react'
 export const CartContext = createContext()
 
 function CartProvider({ children }) {
+    const [isCartOpen, setIsCartOpen] = useState(false)
+    console.log('isCartOpen', isCartOpen)
+
+    // store a list of products in cart
     const [cart, setCart] = useState([])
+    // store unique items in cart
     const totalCart = cart.length
+    // store total quantity of each items
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0)
+    // store the total price
     const subtotal = cart.reduce(
         (total, item) => total + item.price * item.quantity,
         0
     )
+
+    const toggleCart = useCallback(() => {
+        setIsCartOpen((currentState) => !currentState)
+    })
+
+    const closeCart = useCallback(() => {
+        setIsCartOpen(false)
+    })
 
     const addToCart = useCallback((item) => {
         setCart((currentCart) => {
@@ -51,6 +66,10 @@ function CartProvider({ children }) {
             totalCart,
             totalItems,
             subtotal,
+            isCartOpen,
+            setIsCartOpen,
+            toggleCart,
+            closeCart,
         }
     })
 

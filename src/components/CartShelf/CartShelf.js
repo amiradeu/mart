@@ -1,5 +1,5 @@
 import React, { memo, useContext, useRef, useState } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
@@ -13,42 +13,17 @@ function CartShelf() {
     const closeRef = useRef()
     const checkoutRef = useRef()
 
-    const { cart, totalItems, subtotal } = useContext(CartContext)
-
-    useGSAP((context, contextSafe) => {
-        let tl = gsap.timeline()
-        tl.from(asideRef.current, {
-            x: '100%',
-            duration: 0.5,
-        })
-        tl.from(checkoutRef.current, {
-            y: '150%',
-            duration: 0.1,
-        })
-
-        const clickRestart = contextSafe(() => {
-            // console.log('reverse')
-            tl.restart()
-        })
-
-        const clickReverse = contextSafe(() => {
-            // console.log('reverse')
-            tl.reverse()
-        })
-
-        closeRef.current.addEventListener('click', clickReverse)
-
-        return () => {
-            closeRef.current.removeEventListener('click', clickReverse)
-        }
-    })
+    const { cart, totalItems, subtotal, isCartOpen, closeCart } =
+        useContext(CartContext)
 
     return (
-        <Aside ref={asideRef}>
+        <Aside ref={asideRef} isCartOpen={isCartOpen}>
             <Wrapper>
                 <Header>
                     <h3>My Cart</h3>
-                    <CloseButton ref={closeRef}>X</CloseButton>
+                    <CloseButton ref={closeRef} onClick={closeCart}>
+                        X
+                    </CloseButton>
                 </Header>
                 <Body>
                     {cart.length === 0 && <p>Your cart is currently empty.</p>}
@@ -71,6 +46,16 @@ function CartShelf() {
     )
 }
 
+const slideIn = keyframes`
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+`
+
+const slideOut = keyframes`
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+`
+
 const Aside = styled.aside`
     position: fixed;
     top: 0;
@@ -85,6 +70,9 @@ const Aside = styled.aside`
     @media ${QUERIES.tabletAndDown} {
         width: 360px;
     }
+
+    animation: ${({ isCartOpen }) => (isCartOpen ? slideIn : slideOut)} 0.3s
+        forwards;
 `
 
 const Wrapper = styled.div`
@@ -109,6 +97,7 @@ const CloseButton = styled.button`
     background-color: var(--color-secondary);
     border: 1px solid black;
     border-radius: 100%;
+    color: inherit;
 
     cursor: pointer;
 
@@ -145,6 +134,7 @@ const CheckoutButton = styled.button`
     border-radius: 2rem;
 
     background-color: var(--color-secondary);
+    color: inherit;
 
     text-transform: uppercase;
     font-size: 1.2rem;

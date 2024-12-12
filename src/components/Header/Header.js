@@ -3,16 +3,16 @@ import styled from 'styled-components'
 
 import { CartContext } from '../CartProvider'
 
-function Header({ onCartClick }) {
-    const { totalCart } = useContext(CartContext)
+function Header() {
+    const { totalCart, toggleCart } = useContext(CartContext)
 
     return (
         <Wrapper>
             <Title>Sticker Mart</Title>
-            <Cart onClick={onCartClick}>
+            <CartButton onClick={toggleCart}>
                 Cart
                 {totalCart !== 0 ? `(${totalCart})` : ''}
-            </Cart>
+            </CartButton>
         </Wrapper>
     )
 }
@@ -42,7 +42,7 @@ const Title = styled.h1`
 `
 const Nav = styled.nav``
 
-const Cart = styled.button`
+const CartButton = styled.button`
     padding: 16px 16px;
     background-color: transparent;
     color: inherit;
