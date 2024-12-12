@@ -101,6 +101,15 @@ const Price = styled.div`
 
 const RemoveButton = styled.button`
     grid-area: remove;
+
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--color-gray-100);
+    }
 `
 
 export default Cart

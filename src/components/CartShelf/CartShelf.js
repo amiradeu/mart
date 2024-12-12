@@ -6,13 +6,14 @@ import { useGSAP } from '@gsap/react'
 import { CartContext } from '../CartProvider'
 
 import Cart from '../Cart'
+import { QUERIES } from '../../constants'
 
 function CartShelf() {
     const asideRef = useRef()
     const closeRef = useRef()
     const checkoutRef = useRef()
 
-    const { cart } = useContext(CartContext)
+    const { cart, totalItems, subtotal } = useContext(CartContext)
 
     useGSAP((context, contextSafe) => {
         let tl = gsap.timeline()
@@ -57,8 +58,11 @@ function CartShelf() {
                 </Body>
                 <Footer>
                     <Total>
-                        <p>Subtotal</p>
-                        <p>MYR</p>
+                        <p>
+                            Subtotal
+                            {totalItems !== 0 ? ` (${totalItems} items)` : ''}
+                        </p>
+                        <p>MYR {subtotal}</p>
                     </Total>
                     <CheckoutButton ref={checkoutRef}>checkout</CheckoutButton>
                 </Footer>
@@ -73,10 +77,14 @@ const Aside = styled.aside`
     right: 0;
 
     display: flex;
-    width: 400px;
+    width: 480px;
     height: 100%;
 
     background-color: aliceblue;
+
+    @media ${QUERIES.tabletAndDown} {
+        width: 360px;
+    }
 `
 
 const Wrapper = styled.div`
@@ -112,7 +120,11 @@ const CloseButton = styled.button`
 
 const Body = styled.div`
     flex: 1;
+
+    display: flex;
+    flex-direction: column;
     overflow-y: scroll;
+    row-gap: 12px;
 `
 
 const Footer = styled.div`

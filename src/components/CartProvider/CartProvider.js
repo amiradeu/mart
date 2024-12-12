@@ -5,8 +5,11 @@ export const CartContext = createContext()
 function CartProvider({ children }) {
     const [cart, setCart] = useState([])
     const totalCart = cart.length
-
-    console.log('total: ', totalCart)
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0)
+    const subtotal = cart.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+    )
 
     const addToCart = useCallback((item) => {
         setCart((currentCart) => {
@@ -46,6 +49,8 @@ function CartProvider({ children }) {
             deleteFromCart,
             getCartLength,
             totalCart,
+            totalItems,
+            subtotal,
         }
     })
 
