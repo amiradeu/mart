@@ -65,7 +65,7 @@ const Aside = styled.aside`
     width: 480px;
     height: 100%;
 
-    background-color: aliceblue;
+    background-color: var(--color-background);
 
     @media ${QUERIES.tabletAndDown} {
         width: 360px;

@@ -4,7 +4,6 @@ export const CartContext = createContext()
 
 function CartProvider({ children }) {
     const [isCartOpen, setIsCartOpen] = useState(false)
-    console.log('isCartOpen', isCartOpen)
 
     // store a list of products in cart
     const [cart, setCart] = useState([])

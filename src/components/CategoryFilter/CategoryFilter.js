@@ -63,20 +63,23 @@ const Radio = styled.input.attrs({ type: 'radio' })`
     transition: 0.2s all linear;
 
     &:checked + label {
-        border-color: black;
-        background-color: var(--color-secondary);
-        color: black;
+        background-color: black;
+        color: white;
     }
 `
 
 const Label = styled.label`
     cursor: pointer;
-    padding: 4px 16px;
-    border: 1px solid var(--color-gray-200);
-    border-radius: 1em;
+    padding: 8px 24px;
+    border: 1px solid black;
+    border-radius: 4em;
+    box-shadow: inset 0 0 0 -1px black;
+    transition: all 0.5s ease-in-out;
 
     &:hover {
-        background-color: var(--color-gray-100);
+        color: white;
+        box-shadow: inset 0 -40px 0 -1px black;
+        /* background-color: var(--color-secondary); */
     }
 `
 
