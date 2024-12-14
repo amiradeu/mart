@@ -1,5 +1,10 @@
 export const CATEGORIES = [
     {
+        id: 'ALL',
+        name: 'ALL',
+        symbol: '',
+    },
+    {
         id: 'ALPHA',
         name: 'ALPHABET',
         symbol: '🔤',
@@ -90,7 +95,7 @@ export const PRODUCTS = [
     {
         title: 'NUM 04',
         subtitle: '10mm Circle Numbers Matte 1-100',
-        price: 14,
+        price: 15,
         image: 'num04',
         category: CATEGORY.NUM,
         quantity: 22,
@@ -106,7 +111,7 @@ export const PRODUCTS = [
         description: '',
     },
     {
-        title: 'NUM 06',
+        title: 'NUM 6.1',
         subtitle: 'Outline Circle Numbers 1-50 (Red)',
         price: 1,
         image: 'num06',
@@ -115,7 +120,7 @@ export const PRODUCTS = [
         description: '',
     },
     {
-        title: 'NUM 06',
+        title: 'NUM 6.2',
         subtitle: 'Outline Circle Numbers 1-50 (Orange)',
         price: 1,
         image: 'num06',
@@ -126,28 +131,28 @@ export const PRODUCTS = [
     {
         title: 'ARROW 01',
         subtitle: 'Fluorescent Arrow',
-        price: 7,
+        price: 25,
         image: 'arrow01',
         category: CATEGORY.ARROW,
-        quantity: 20,
+        quantity: 7,
         description: '',
     },
     {
         title: 'ARROW 02',
         subtitle: 'Classic Arrow',
-        price: 16,
+        price: 20,
         image: 'arrow02',
         category: CATEGORY.ARROW,
-        quantity: 20,
+        quantity: 16,
         description: '',
     },
     {
         title: 'ARROW 03',
         subtitle: 'Quads Arrow',
-        price: 21,
+        price: 10,
         image: 'arrow03',
         category: CATEGORY.ARROW,
-        quantity: 20,
+        quantity: 21,
         description: '',
     },
     {

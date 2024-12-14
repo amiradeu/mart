@@ -65,7 +65,7 @@ const Wrapper = styled.div`
     /* background-color: #d0aaf1; */
 
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1px;
 `
 
@@ -78,8 +78,5 @@ const ProductWrapper = styled.a`
     } */
 
     cursor: pointer;
-    &:hover {
-        background-color: var(--color-gray-100);
-    }
 `
 export default ProductGrid

@@ -3,27 +3,12 @@ import styled from 'styled-components'
 
 import { CATEGORIES } from '../../data'
 
-const ALL = 'ALL'
-
 function CategoryFilter({ category, onChange }) {
     return (
         <Wrapper>
-            <Group>
-                <Radio
-                    name='current-category'
-                    id={ALL}
-                    value={ALL}
-                    checked={ALL === category}
-                    onChange={(event) => {
-                        onChange(event.target.value)
-                    }}
-                />
-                <Label htmlFor={ALL}>{ALL}</Label>
-            </Group>
-
             {CATEGORIES.map(({ name }) => (
-                <Group key={name}>
-                    <Radio
+                <InputWrapper key={name}>
+                    <RadioInput
                         name='current-category'
                         id={name}
                         value={name}
@@ -33,7 +18,7 @@ function CategoryFilter({ category, onChange }) {
                         }}
                     />
                     <Label htmlFor={name}>{name}</Label>
-                </Group>
+                </InputWrapper>
             ))}
         </Wrapper>
     )
@@ -44,15 +29,29 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
 
     justify-content: center;
-    gap: 16px 4px;
+    gap: 0px 4px;
 
-    padding: 16px 0;
+    margin: 16px 0;
     border-radius: 2em;
 `
 
-const Group = styled.div``
+const InputWrapper = styled.div`
+    &:has(input[type='radio']:checked) {
+        animation: bounce 1s;
 
-const Radio = styled.input.attrs({ type: 'radio' })`
+        @keyframes bounce {
+            from {
+                scale: 0.8;
+            }
+
+            to {
+                scale: 1;
+            }
+        }
+    }
+`
+
+const RadioInput = styled.input.attrs({ type: 'radio' })`
     clip: rect(0 0 0 0);
     clip-path: inset(100%);
     height: 1px;
@@ -60,22 +59,40 @@ const Radio = styled.input.attrs({ type: 'radio' })`
     position: absolute;
     white-space: nowrap;
     width: 1px;
-    transition: 0.2s all linear;
 
+    /* Animate Label when radio is selected */
     &:checked + label {
-        background-color: black;
         color: white;
+    }
+
+    &:checked + label::before {
+        transform: translateY(0);
     }
 `
 
 const Label = styled.label`
     cursor: pointer;
-    padding: 4px 16px;
-    border: 1px solid var(--color-gray-200);
-    border-radius: 1em;
+    padding: 8px 24px;
+    border: 1px solid black;
+    border-radius: 4em;
+    transition: color 0.5s ease-in-out;
 
-    &:hover {
-        background-color: var(--color-gray-100);
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 4em;
+        background-color: black;
+        transform: translateY(100%);
+        transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+        z-index: -1;
     }
 `
 
