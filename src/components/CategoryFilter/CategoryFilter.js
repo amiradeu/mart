@@ -59,11 +59,14 @@ const RadioInput = styled.input.attrs({ type: 'radio' })`
     position: absolute;
     white-space: nowrap;
     width: 1px;
-    transition: 0.2s all ease-in;
 
+    /* Animate Label when radio is selected */
     &:checked + label {
         color: white;
-        box-shadow: inset 0 -40px 0 -1px black;
+    }
+
+    &:checked + label::before {
+        transform: translateY(0);
     }
 `
 
@@ -72,16 +75,25 @@ const Label = styled.label`
     padding: 8px 24px;
     border: 1px solid black;
     border-radius: 4em;
-    box-shadow: inset 0 0 0 -1px black;
-    transition: all 0.5s ease-in-out;
+    transition: color 0.5s ease-in-out;
 
-    &:hover {
-        /* color: white;
-        box-shadow: inset 0 -40px 0 -1px black; */
-        /* background-color: var(--color-secondary); */
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 4em;
+        background-color: black;
+        transform: translateY(100%);
+        transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+        z-index: -1;
     }
 `
-
-const Svg = styled.svg``
 
 export default CategoryFilter
