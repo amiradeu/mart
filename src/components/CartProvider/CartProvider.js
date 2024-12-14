@@ -1,10 +1,24 @@
-import React, { createContext, useCallback, useMemo, useState } from 'react'
+import React, {
+    createContext,
+    useCallback,
+    useMemo,
+    useRef,
+    useState,
+} from 'react'
 
 export const CartContext = createContext()
 
 function CartProvider({ children }) {
-    const [isCartOpen, setIsCartOpen] = useState(false)
+    // UI element of cart
+    const cartRef = useRef()
+    const [cartPosition, setCartPosition] = useState({
+        x: 0,
+        y: 0,
+    })
 
+    // ---- CART SHELF SLIDER ----
+    // store cart slider state
+    const [isCartOpen, setIsCartOpen] = useState(false)
     // store a list of products in cart
     const [cart, setCart] = useState([])
     // store unique items in cart
@@ -16,6 +30,21 @@ function CartProvider({ children }) {
         (total, item) => total + item.price * item.quantity,
         0
     )
+
+    const updateCartPosition = useCallback(() => {
+        if (cartRef.current) {
+            console.log(cartRef.current.getBoundingClientRect())
+
+            const { x, width, y } = cartRef.current.getBoundingClientRect()
+
+            // console.log('cart', x, y)
+
+            setCartPosition({
+                x: x + width / 2,
+                y: 24,
+            })
+        }
+    })
 
     const toggleCart = useCallback(() => {
         setIsCartOpen((currentState) => !currentState)
@@ -69,6 +98,10 @@ function CartProvider({ children }) {
             setIsCartOpen,
             toggleCart,
             closeCart,
+            cartRef,
+            cartPosition,
+            setCartPosition,
+            updateCartPosition,
         }
     })
 

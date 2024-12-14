@@ -78,8 +78,5 @@ const ProductWrapper = styled.a`
     } */
 
     cursor: pointer;
-    &:hover {
-        background-color: var(--color-gray-100);
-    }
 `
 export default ProductGrid

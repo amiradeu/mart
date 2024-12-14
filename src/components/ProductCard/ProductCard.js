@@ -1,17 +1,36 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import styled from 'styled-components'
 import Balancer from 'react-wrap-balancer'
-import { QUERIES } from '../../constants'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { Plus } from 'react-feather'
 
 import { CartContext } from '../CartProvider'
+import { QUERIES } from '../../constants'
 
 function ProductCard({ title, subtitle, price, image, category, description }) {
-    const { addToCart } = useContext(CartContext)
-    // const { addToCart } = useContext(ToastContext)
+    const { addToCart, cartPosition } = useContext(CartContext)
+    const circleRef = useRef()
 
-    const handleClick = () => {
+    const { contextSafe } = useGSAP(() => {})
+
+    const handleClick = contextSafe(() => {
         addToCart({ title, subtitle, image, price })
-    }
+
+        const tl = gsap.timeline()
+        const { right, y } = circleRef.current.getBoundingClientRect()
+        console.log('circle', right, y)
+
+        tl.set(circleRef.current, {
+            opacity: 100,
+        })
+
+        tl.to(circleRef.current, {
+            x: cartPosition.x - right + 'px',
+            y: -y + 'px',
+            duration: 2,
+        })
+    })
 
     return (
         <Wrapper>
@@ -30,7 +49,10 @@ function ProductCard({ title, subtitle, price, image, category, description }) {
                     <Balancer>
                         <Subtitle>{subtitle}</Subtitle>
                     </Balancer>
-                    <Button onClick={handleClick}>+</Button>
+                    <ButtonWrapper>
+                        <Button onClick={handleClick}>+</Button>
+                        {/* <Circle ref={circleRef}></Circle> */}
+                    </ButtonWrapper>
                 </SubtitleWrapper>
                 <Price>MYR{price}</Price>
             </BottomWrapper>
@@ -96,6 +118,10 @@ const Price = styled.p`
 `
 const Description = styled.p``
 
+const ButtonWrapper = styled.div`
+    position: relative;
+`
+
 const Button = styled.button`
     width: 24px;
     height: 24px;
@@ -115,6 +141,20 @@ const Button = styled.button`
         background-color: black;
         color: white;
     }
+`
+
+const Circle = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    width: 24px;
+    height: 24px;
+    border-radius: 100px;
+
+    background-color: deeppink;
+    /* opacity: 0; */
 `
 
 export default ProductCard

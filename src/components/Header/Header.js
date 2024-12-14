@@ -1,16 +1,26 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 
 import { CartContext } from '../CartProvider'
 import SlideUpText from '../SlideUpText'
 
 function Header() {
-    const { totalCart, toggleCart } = useContext(CartContext)
+    const { totalCart, toggleCart, cartRef, updateCartPosition } =
+        useContext(CartContext)
+
+    useEffect(() => {
+        updateCartPosition()
+        window.addEventListener('resize', updateCartPosition)
+
+        return () => {
+            window.removeEventListener('resize', updateCartPosition)
+        }
+    }, [])
 
     return (
         <Wrapper>
             <Title>Sticker Mart</Title>
-            <CartButton onClick={toggleCart}>
+            <CartButton onClick={toggleCart} ref={cartRef}>
                 Cart
                 {totalCart !== 0 && (
                     <>
