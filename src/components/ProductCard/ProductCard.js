@@ -17,19 +17,19 @@ function ProductCard({ title, subtitle, price, image, category, description }) {
     const handleClick = contextSafe(() => {
         addToCart({ title, subtitle, image, price })
 
-        const tl = gsap.timeline()
-        const { right, y } = circleRef.current.getBoundingClientRect()
-        console.log('circle', right, y)
+        // const tl = gsap.timeline()
+        // const { right, y } = circleRef.current.getBoundingClientRect()
+        // // console.log('circle', right, y)
 
-        tl.set(circleRef.current, {
-            opacity: 100,
-        })
+        // tl.set(circleRef.current, {
+        //     opacity: 100,
+        // })
 
-        tl.to(circleRef.current, {
-            x: cartPosition.x - right + 'px',
-            y: -y + 'px',
-            duration: 2,
-        })
+        // tl.to(circleRef.current, {
+        //     x: cartPosition.x - right + 'px',
+        //     y: -y + 'px',
+        //     duration: 2,
+        // })
     })
 
     return (
@@ -51,7 +51,7 @@ function ProductCard({ title, subtitle, price, image, category, description }) {
                     </Balancer>
                     <ButtonWrapper>
                         <Button onClick={handleClick}>+</Button>
-                        {/* <Circle ref={circleRef}></Circle> */}
+                        <Circle ref={circleRef}></Circle>
                     </ButtonWrapper>
                 </SubtitleWrapper>
                 <Price>MYR{price}</Price>
@@ -154,7 +154,7 @@ const Circle = styled.div`
     border-radius: 100px;
 
     background-color: deeppink;
-    /* opacity: 0; */
+    opacity: 0;
 `
 
 export default ProductCard

@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import { CartContext } from '../CartProvider'
 
 function Cart({ title, subtitle, quantity, image, price }) {
-    const { deleteFromCart } = useContext(CartContext)
+    const { deleteFromCart, addQuantity, subtractQuantity } =
+        useContext(CartContext)
 
     return (
         <Wrapper>
@@ -19,9 +20,11 @@ function Cart({ title, subtitle, quantity, image, price }) {
                 <Subtitle>{subtitle}</Subtitle>
             </TitleWrapper>
             <QuantityWrapper>
-                <MinusButton>-</MinusButton>
+                <MinusButton onClick={() => subtractQuantity(title)}>
+                    -
+                </MinusButton>
                 <Quantity>{quantity}</Quantity>
-                <AddButton>+</AddButton>
+                <AddButton onClick={() => addQuantity(title)}>+</AddButton>
             </QuantityWrapper>
             <Price>MYR {price}</Price>
             <RemoveButton onClick={() => deleteFromCart(title)}>
@@ -89,9 +92,11 @@ const Button = styled.button`
 `
 const MinusButton = styled(Button)`
     border-radius: 100px 0 0 100px;
+    color: inherit;
 `
 const AddButton = styled(Button)`
     border-radius: 0 100px 100px 0;
+    color: inherit;
 `
 
 const Price = styled.div`
@@ -103,6 +108,8 @@ const RemoveButton = styled.button`
     grid-area: remove;
 
     background-color: transparent;
+    color: inherit;
+
     border: none;
     text-decoration: underline;
     cursor: pointer;

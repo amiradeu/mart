@@ -33,7 +33,7 @@ function CartProvider({ children }) {
 
     const updateCartPosition = useCallback(() => {
         if (cartRef.current) {
-            console.log(cartRef.current.getBoundingClientRect())
+            // console.log(cartRef.current.getBoundingClientRect())
 
             const { x, width, y } = cartRef.current.getBoundingClientRect()
 
@@ -74,6 +74,30 @@ function CartProvider({ children }) {
         })
     })
 
+    // Update quantity for a specific product
+    const addQuantity = useCallback((title) => {
+        setCart((currentCart) =>
+            currentCart.map((product) =>
+                product.title === title
+                    ? { ...product, quantity: product.quantity + 1 }
+                    : product
+            )
+        )
+    }, [])
+
+    const subtractQuantity = useCallback((title) => {
+        setCart(
+            (currentCart) =>
+                currentCart
+                    .map((product) =>
+                        product.title === title
+                            ? { ...product, quantity: product.quantity - 1 }
+                            : product
+                    )
+                    .filter((product) => product.quantity > 0) // Remove product if quantity reaches 0
+        )
+    }, [])
+
     const deleteFromCart = useCallback((title) => {
         setCart((currentCart) =>
             currentCart.filter((product) => product.title !== title)
@@ -90,6 +114,8 @@ function CartProvider({ children }) {
             setCart,
             addToCart,
             deleteFromCart,
+            addQuantity,
+            subtractQuantity,
             getCartLength,
             totalCart,
             totalItems,
