@@ -33,6 +33,7 @@ function CategoryFilter({ category, onChange }) {
                         }}
                     />
                     <Label htmlFor={name}>{name}</Label>
+                    <SvgWrapper></SvgWrapper>
                 </Group>
             ))}
         </Wrapper>
@@ -50,7 +51,9 @@ const Wrapper = styled.div`
     border-radius: 2em;
 `
 
-const Group = styled.div``
+const Group = styled.div`
+    position: relative;
+`
 
 const Radio = styled.input.attrs({ type: 'radio' })`
     clip: rect(0 0 0 0);
@@ -68,18 +71,40 @@ const Radio = styled.input.attrs({ type: 'radio' })`
     }
 `
 
+const SvgWrapper = styled.div`
+    position: absolute;
+    top: 150%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    padding: 8px 0px;
+    border: 1px solid black;
+    border-radius: 4em;
+
+    z-index: -2;
+    transition: all 0.5s ease-in-out;
+
+    visibility: hidden;
+`
+
 const Label = styled.label`
     cursor: pointer;
     padding: 8px 24px;
     border: 1px solid black;
     border-radius: 4em;
-    box-shadow: inset 0 0 0 -1px black;
+    /* box-shadow: inset 0 0 0 -1px black; */
     transition: all 0.5s ease-in-out;
+
+    &:hover + ${SvgWrapper} {
+        visibility: visible;
+        display: block;
+        top: -40%;
+        background-color: black;
+    }
 
     &:hover {
         color: white;
-        box-shadow: inset 0 -40px 0 -1px black;
-        /* background-color: var(--color-secondary); */
     }
 `
 
