@@ -29,9 +29,9 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
 
     justify-content: center;
-    gap: 20px 4px;
+    gap: 0px 4px;
 
-    padding: 16px 0;
+    margin: 16px 0;
     border-radius: 2em;
 `
 

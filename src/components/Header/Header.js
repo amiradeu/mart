@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 
 import { CartContext } from '../CartProvider'
+import SlideUpText from '../SlideUpText'
 
 function Header() {
     const { totalCart, toggleCart } = useContext(CartContext)
@@ -11,7 +12,11 @@ function Header() {
             <Title>Sticker Mart</Title>
             <CartButton onClick={toggleCart}>
                 Cart
-                {totalCart !== 0 ? `(${totalCart})` : ''}
+                {totalCart !== 0 && (
+                    <>
+                        (<SlideUpText>{totalCart}</SlideUpText>)
+                    </>
+                )}
             </CartButton>
         </Wrapper>
     )
@@ -40,9 +45,10 @@ const Title = styled.h1`
 
     margin-right: auto;
 `
-const Nav = styled.nav``
 
 const CartButton = styled.button`
+    display: flex;
+
     padding: 16px 16px;
     background-color: transparent;
     color: inherit;
