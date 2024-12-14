@@ -95,7 +95,7 @@ export const PRODUCTS = [
     {
         title: 'NUM 04',
         subtitle: '10mm Circle Numbers Matte 1-100',
-        price: 14,
+        price: 15,
         image: 'num04',
         category: CATEGORY.NUM,
         quantity: 22,
