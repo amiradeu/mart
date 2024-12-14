@@ -13,17 +13,17 @@ const slideUp = keyframes`
   from { transform: translateY(100%)}
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled.span`
     display: inline-block;
     position: relative;
     overflow: hidden;
 
     white-space: nowrap;
-    height: 100%;
     /* border: 1px solid black; */
 `
 
 const Text = styled.div`
+    line-height: 1.2;
     animation: ${slideUp} 1s cubic-bezier(0.25, 1, 0.5, 1);
 `
 

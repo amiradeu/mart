@@ -2,11 +2,12 @@ import React, { memo, useContext, useRef, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { Link } from 'react-router-dom'
 
 import { CartContext } from '../CartProvider'
-
 import Cart from '../Cart'
 import { QUERIES } from '../../constants'
+import SlideUpText from '../SlideUpText'
 
 function CartShelf() {
     const asideRef = useRef()
@@ -35,11 +36,24 @@ function CartShelf() {
                     <Total>
                         <p>
                             Subtotal
-                            {totalItems !== 0 ? ` (${totalItems} items)` : ''}
+                            {totalItems !== 0 ? (
+                                <>
+                                    &nbsp;(
+                                    {totalItems}
+                                    &nbsp;items)
+                                </>
+                            ) : (
+                                ''
+                            )}
                         </p>
-                        <p>MYR {subtotal}</p>
+                        <TextWrapper>
+                            <div>MYR&nbsp;</div>
+                            {subtotal}
+                        </TextWrapper>
                     </Total>
-                    <CheckoutButton ref={checkoutRef}>checkout</CheckoutButton>
+                    <MyCartLink to='/mycart' ref={checkoutRef}>
+                        view cart
+                    </MyCartLink>
                 </Footer>
             </Wrapper>
         </Aside>
@@ -126,7 +140,16 @@ const Total = styled.div`
     margin: 16px 0;
 `
 
-const CheckoutButton = styled.button`
+const TextWrapper = styled.div`
+    display: flex;
+    align-items: baseline;
+`
+
+const MyCartLink = styled(Link)`
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+
     width: 100%;
     padding: 16px 0px;
 

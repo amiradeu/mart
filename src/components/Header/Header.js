@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import { CartContext } from '../CartProvider'
 import SlideUpText from '../SlideUpText'
@@ -19,7 +20,7 @@ function Header() {
 
     return (
         <Wrapper>
-            <Title>Sticker Mart</Title>
+            <HomeLink to='/'>Sticker Mart</HomeLink>
             <CartButton onClick={toggleCart} ref={cartRef}>
                 Cart
                 {totalCart !== 0 && (
@@ -48,10 +49,14 @@ const Wrapper = styled.div`
     padding: 0px 32px;
 `
 
-const Title = styled.h1`
+const HomeLink = styled(Link)`
     font-size: 1rem;
+    font-weight: 800;
     line-height: 1;
     letter-spacing: -2%;
+
+    color: inherit;
+    text-decoration: none;
 
     margin-right: auto;
 `

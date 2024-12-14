@@ -5,6 +5,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 // Router Pages
 import App from './App'
 import Error from './components/Error'
+import MyCart from './components/MyCart'
+
+import CartProvider from './components/CartProvider'
 
 import GlobalStyles from './components/GlobalStyles'
 
@@ -15,11 +18,17 @@ const router = createBrowserRouter([
         element: <App />,
         errorElement: <Error />,
     },
+    {
+        path: '/mycart',
+        element: <MyCart />,
+    },
 ])
 
 root.render(
     <React.StrictMode>
-        <RouterProvider router={router} />
-        <GlobalStyles />
+        <CartProvider>
+            <RouterProvider router={router} />
+            <GlobalStyles />
+        </CartProvider>
     </React.StrictMode>
 )
