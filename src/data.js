@@ -1,5 +1,10 @@
 export const CATEGORIES = [
     {
+        id: 'ALL',
+        name: 'ALL',
+        symbol: '',
+    },
+    {
         id: 'ALPHA',
         name: 'ALPHABET',
         symbol: '🔤',
