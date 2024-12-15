@@ -38,6 +38,8 @@ const Wrapper = styled.div`
     position: sticky;
     top: 0;
     left: 0;
+    height: 50px;
+
     background-color: var(--color-background);
     border-bottom: 1px solid black;
 
@@ -46,7 +48,7 @@ const Wrapper = styled.div`
 
     align-items: baseline;
 
-    padding: 0px 32px;
+    padding: 0px 16px;
 `
 
 const HomeLink = styled(Link)`
@@ -64,7 +66,7 @@ const HomeLink = styled(Link)`
 const CartButton = styled.button`
     display: flex;
 
-    padding: 16px 16px;
+    padding: 16px 0px;
     background-color: transparent;
     color: inherit;
     font-size: 16px;

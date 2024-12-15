@@ -10,6 +10,7 @@ html {
   --color-white: #f6f6f6;
   --color-gray-100: rgba(0, 0, 0, 0.015);
   --color-gray-200: rgba(0, 0, 0, 0.1);
+  --color-gray-700: '#a09f9f';
   --color-background: #fef7ec; // #F2F2F2;
 }
 

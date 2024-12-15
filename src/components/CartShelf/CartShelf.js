@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Link } from 'react-router-dom'
+import { X, ArrowRight } from 'react-feather'
 
 import { CartContext } from '../CartProvider'
 import Cart from '../Cart'
@@ -23,7 +24,7 @@ function CartShelf() {
                 <Header>
                     <h3>My Cart</h3>
                     <CloseButton ref={closeRef} onClick={closeCart}>
-                        X
+                        <X size={20} />
                     </CloseButton>
                 </Header>
                 <Body>
@@ -52,7 +53,9 @@ function CartShelf() {
                         </TextWrapper>
                     </Total>
                     <MyCartLink to='/mycart' ref={checkoutRef}>
-                        view cart
+                        <span>view cart </span>
+                        <ArrowRight />
+                        <ArrowRight />
                     </MyCartLink>
                 </Footer>
             </Wrapper>
@@ -91,7 +94,6 @@ const Aside = styled.aside`
 
 const Wrapper = styled.div`
     width: 100%;
-    padding: 20px 16px;
 
     display: flex;
     flex-direction: column;
@@ -104,22 +106,27 @@ const Header = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    padding-inline-start: 16px;
     margin-bottom: 20px;
+
+    height: 50px;
+    border-bottom: 1px solid black;
 `
 
 const CloseButton = styled.button`
     width: 50px;
     height: 50px;
-    background-color: var(--color-secondary);
-    border: 1px solid black;
-    border-radius: 100%;
+    margin-inline-end: 16px;
+
+    background-color: transparent;
+    border: none;
     color: inherit;
 
     cursor: pointer;
 
     &:hover {
-        background-color: black;
-        color: white;
+        background-color: var(--color-gray-200);
     }
 `
 
@@ -130,16 +137,23 @@ const Body = styled.div`
     flex-direction: column;
     overflow-y: scroll;
     row-gap: 12px;
+
+    padding: 0 16px;
 `
 
 const Footer = styled.div`
     border-top: 1px solid black;
+    margin-block-end: 16px;
+    padding: 0 16px;
+
+    display: flex;
+    flex-direction: column;
 `
 
 const Total = styled.div`
     display: flex;
     justify-content: space-between;
-    margin: 16px 0;
+    margin-block: 12px 4px;
 `
 
 const TextWrapper = styled.div`
@@ -148,17 +162,19 @@ const TextWrapper = styled.div`
 `
 
 const MyCartLink = styled(Link)`
+    align-self: flex-end;
+
     display: inline-block;
     text-align: center;
     text-decoration: none;
 
     width: 100%;
-    padding: 16px 0px;
+    padding: 8px 0px;
 
-    border: 1px solid black;
-    border-radius: 2rem;
+    /* border: 1px solid black; */
+    /* border-radius: 2rem; */
 
-    background-color: var(--color-secondary);
+    /* background-color: var(--color-secondary); */
     color: inherit;
 
     text-transform: uppercase;
@@ -169,8 +185,9 @@ const MyCartLink = styled(Link)`
 
     &:hover,
     &:active {
-        background-color: black;
-        color: white;
+        text-decoration: underline;
+        background-color: var(--color-gray-200);
+        /* color: white; */
     }
 `
 

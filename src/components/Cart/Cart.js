@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import { CartContext } from '../CartProvider'
+import { QUERIES } from '../../constants'
 
 function Cart({ title, subtitle, quantity, image, price }) {
     const { deleteFromCart, addQuantity, subtractQuantity } =
@@ -37,11 +38,15 @@ function Cart({ title, subtitle, quantity, image, price }) {
 const Wrapper = styled.div`
     display: grid;
     width: 100%;
-    grid-template-columns: minmax(100px, 1fr) 3fr 1fr;
+    grid-template-columns: minmax(100px, 2fr) 3fr 1fr;
     grid-template-areas:
         'image title price'
         'image quantity remove';
     gap: 16px;
+
+    @media ${QUERIES.tabletAndDown} {
+        gap: 8px;
+    }
 `
 
 const ImageWrapper = styled.div`
@@ -58,8 +63,14 @@ const Image = styled.img`
 const TitleWrapper = styled.div`
     grid-area: title;
 `
-const Title = styled.div``
-const Subtitle = styled.div``
+const Title = styled.div`
+    font-size: 1rem;
+`
+const Subtitle = styled.div`
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--color-gray-700);
+`
 
 const QuantityWrapper = styled.div`
     grid-area: quantity;
@@ -101,9 +112,12 @@ const AddButton = styled(Button)`
     color: inherit;
 `
 
-const Price = styled.div`
+const Price = styled.p`
     grid-area: price;
     white-space: nowrap;
+
+    font-size: 0.9rem;
+    text-align: center;
 `
 
 const RemoveButton = styled.button`
