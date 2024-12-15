@@ -37,7 +37,7 @@ function Cart({ title, subtitle, quantity, image, price }) {
 const Wrapper = styled.div`
     display: grid;
     width: 100%;
-    grid-template-columns: 150px 3fr 1fr;
+    grid-template-columns: minmax(100px, 1fr) 3fr 1fr;
     grid-template-areas:
         'image title price'
         'image quantity remove';
@@ -46,6 +46,8 @@ const Wrapper = styled.div`
 
 const ImageWrapper = styled.div`
     grid-area: image;
+
+    aspect-ratio: 1/1;
 `
 
 const Image = styled.img`
