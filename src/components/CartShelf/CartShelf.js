@@ -85,7 +85,7 @@ const Aside = styled.aside`
     background-color: var(--color-background);
 
     @media ${QUERIES.tabletAndDown} {
-        width: 360px;
+        width: 90%;
     }
 
     animation: ${({ isCartOpen }) => (isCartOpen ? slideIn : slideOut)} 0.3s
@@ -112,6 +112,10 @@ const Header = styled.header`
 
     height: 50px;
     border-bottom: 1px solid black;
+
+    @media ${QUERIES.tabletAndDown} {
+        margin-bottom: 12px;
+    }
 `
 
 const CloseButton = styled.button`
@@ -139,6 +143,10 @@ const Body = styled.div`
     row-gap: 12px;
 
     padding: 0 16px;
+
+    @media ${QUERIES.tabletAndDown} {
+        padding: 0 8px;
+    }
 `
 
 const Footer = styled.div`

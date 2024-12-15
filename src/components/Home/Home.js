@@ -37,7 +37,6 @@ const Wrapper = styled.div`
 `
 
 const Main = styled.main`
-    padding-block-start: 1rem;
     isolation: isolate;
 `
 

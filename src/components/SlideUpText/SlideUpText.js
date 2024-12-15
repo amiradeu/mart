@@ -23,7 +23,6 @@ const Wrapper = styled.span`
 `
 
 const Text = styled.div`
-    line-height: 1.2;
     animation: ${slideUp} 1s cubic-bezier(0.25, 1, 0.5, 1);
 `
 
