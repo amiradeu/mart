@@ -6,7 +6,7 @@ import { CartContext } from '../CartProvider'
 import SlideUpText from '../SlideUpText'
 
 function Header() {
-    const { totalCart, toggleCart, cartRef, updateCartPosition } =
+    const { totalItems, toggleCart, cartRef, updateCartPosition } =
         useContext(CartContext)
 
     useEffect(() => {
@@ -23,9 +23,9 @@ function Header() {
             <HomeLink to='/'>Sticker Mart</HomeLink>
             <CartButton onClick={toggleCart} ref={cartRef}>
                 Cart
-                {totalCart !== 0 && (
+                {totalItems !== 0 && (
                     <>
-                        (<SlideUpText>{totalCart}</SlideUpText>)
+                        (<SlideUpText>{totalItems}</SlideUpText>)
                     </>
                 )}
             </CartButton>
