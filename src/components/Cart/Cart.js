@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import { CartContext } from '../CartProvider'
+import { QUERIES } from '../../constants'
+import Balancer from 'react-wrap-balancer'
 
 function Cart({ title, subtitle, quantity, image, price }) {
     const { deleteFromCart, addQuantity, subtractQuantity } =
@@ -17,7 +19,9 @@ function Cart({ title, subtitle, quantity, image, price }) {
             </ImageWrapper>
             <TitleWrapper>
                 <Title>{title}</Title>
-                <Subtitle>{subtitle}</Subtitle>
+                <Balancer>
+                    <Subtitle>{subtitle}</Subtitle>
+                </Balancer>
             </TitleWrapper>
             <QuantityWrapper>
                 <MinusButton onClick={() => subtractQuantity(title)}>
@@ -37,15 +41,21 @@ function Cart({ title, subtitle, quantity, image, price }) {
 const Wrapper = styled.div`
     display: grid;
     width: 100%;
-    grid-template-columns: 150px 3fr 1fr;
+    grid-template-columns: minmax(120px, 2fr) 3fr 1fr;
     grid-template-areas:
         'image title price'
         'image quantity remove';
     gap: 16px;
+
+    @media ${QUERIES.tabletAndDown} {
+        gap: 8px;
+    }
 `
 
 const ImageWrapper = styled.div`
     grid-area: image;
+
+    aspect-ratio: 1/1;
 `
 
 const Image = styled.img`
@@ -56,8 +66,14 @@ const Image = styled.img`
 const TitleWrapper = styled.div`
     grid-area: title;
 `
-const Title = styled.div``
-const Subtitle = styled.div``
+const Title = styled.div`
+    font-size: 1rem;
+`
+const Subtitle = styled.div`
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--color-gray-700);
+`
 
 const QuantityWrapper = styled.div`
     grid-area: quantity;
@@ -70,6 +86,10 @@ const QuantityWrapper = styled.div`
     width: 100px;
     border: 1px solid black;
     border-radius: 100px;
+
+    @media ${QUERIES.tabletAndDown} {
+        height: 32px;
+    }
 `
 
 const Quantity = styled.div`
@@ -99,9 +119,12 @@ const AddButton = styled(Button)`
     color: inherit;
 `
 
-const Price = styled.div`
+const Price = styled.p`
     grid-area: price;
     white-space: nowrap;
+
+    font-size: 0.9rem;
+    text-align: center;
 `
 
 const RemoveButton = styled.button`

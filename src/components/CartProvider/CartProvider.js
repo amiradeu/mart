@@ -6,6 +6,8 @@ import React, {
     useState,
 } from 'react'
 
+import { PRODUCTS } from '../../data'
+
 export const CartContext = createContext()
 
 function CartProvider({ children }) {
@@ -54,6 +56,18 @@ function CartProvider({ children }) {
         setIsCartOpen(false)
     })
 
+    // Function to sort cart based on productsData
+    const sortCart = (cart) => {
+        const productOrderMap = PRODUCTS.reduce((acc, product, index) => {
+            acc[product.title] = index // Use product title as key and its position in the list as value
+            return acc
+        }, {})
+
+        return [...cart].sort(
+            (a, b) => productOrderMap[a.title] - productOrderMap[b.title]
+        )
+    }
+
     const addToCart = useCallback((item) => {
         setCart((currentCart) => {
             const existingItemIndex = currentCart.findIndex(
@@ -62,15 +76,16 @@ function CartProvider({ children }) {
 
             if (existingItemIndex !== -1) {
                 // update quantity
-                return currentCart.map((item, index) =>
-                    index === existingItemIndex
-                        ? { ...item, quantity: item.quantity + 1 }
-                        : item
+                return sortCart(
+                    currentCart.map((item, index) =>
+                        index === existingItemIndex
+                            ? { ...item, quantity: item.quantity + 1 }
+                            : item
+                    )
                 )
-            } else {
-                // add to cart
-                return [...currentCart, { ...item, quantity: 1 }]
             }
+            // add to cart
+            return sortCart([...currentCart, { ...item, quantity: 1 }])
         })
     })
 
