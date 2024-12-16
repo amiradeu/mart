@@ -22,7 +22,7 @@ function CartShelf() {
         <Aside ref={asideRef} isCartOpen={isCartOpen}>
             <Wrapper>
                 <Header>
-                    <h3>My Cart</h3>
+                    <Title>My Cart</Title>
                     <CloseButton ref={closeRef} onClick={closeCart}>
                         <X size={20} />
                     </CloseButton>
@@ -118,6 +118,10 @@ const Header = styled.header`
     }
 `
 
+const Title = styled.h3`
+    font-weight: 300;
+`
+
 const CloseButton = styled.button`
     width: 50px;
     height: 50px;
@@ -130,7 +134,7 @@ const CloseButton = styled.button`
     cursor: pointer;
 
     &:hover {
-        background-color: var(--color-gray-200);
+        background-color: var(--color-gray-100);
     }
 `
 
@@ -194,7 +198,7 @@ const MyCartLink = styled(Link)`
     &:hover,
     &:active {
         text-decoration: underline;
-        background-color: var(--color-gray-200);
+        background-color: var(--color-gray-100);
         /* color: white; */
     }
 `

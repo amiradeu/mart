@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { CartContext } from '../CartProvider'
 import { QUERIES } from '../../constants'
+import Balancer from 'react-wrap-balancer'
 
 function Cart({ title, subtitle, quantity, image, price }) {
     const { deleteFromCart, addQuantity, subtractQuantity } =
@@ -18,7 +19,9 @@ function Cart({ title, subtitle, quantity, image, price }) {
             </ImageWrapper>
             <TitleWrapper>
                 <Title>{title}</Title>
-                <Subtitle>{subtitle}</Subtitle>
+                <Balancer>
+                    <Subtitle>{subtitle}</Subtitle>
+                </Balancer>
             </TitleWrapper>
             <QuantityWrapper>
                 <MinusButton onClick={() => subtractQuantity(title)}>
@@ -38,7 +41,7 @@ function Cart({ title, subtitle, quantity, image, price }) {
 const Wrapper = styled.div`
     display: grid;
     width: 100%;
-    grid-template-columns: minmax(100px, 2fr) 3fr 1fr;
+    grid-template-columns: minmax(120px, 2fr) 3fr 1fr;
     grid-template-areas:
         'image title price'
         'image quantity remove';
@@ -83,6 +86,10 @@ const QuantityWrapper = styled.div`
     width: 100px;
     border: 1px solid black;
     border-radius: 100px;
+
+    @media ${QUERIES.tabletAndDown} {
+        height: 32px;
+    }
 `
 
 const Quantity = styled.div`
