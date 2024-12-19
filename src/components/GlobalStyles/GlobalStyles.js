@@ -34,6 +34,24 @@ body {
     font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
 
 }
+
+/* LENIS STYLES */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
 `
 
 export default GlobalStyles

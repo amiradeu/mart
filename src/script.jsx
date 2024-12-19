@@ -7,8 +7,9 @@ import App from './App'
 import Error from './components/Error'
 import MyCart from './components/MyCart'
 
+import { Provider } from 'react-wrap-balancer'
 import CartProvider from './components/CartProvider'
-
+import LenisProvider from './components/LenisProvider'
 import GlobalStyles from './components/GlobalStyles'
 
 const root = createRoot(document.querySelector('#root'))
@@ -26,9 +27,13 @@ const router = createBrowserRouter([
 
 root.render(
     <React.StrictMode>
-        <CartProvider>
-            <RouterProvider router={router} />
-            <GlobalStyles />
-        </CartProvider>
+        <Provider>
+            <CartProvider>
+                <LenisProvider>
+                    <RouterProvider router={router} />
+                    <GlobalStyles />
+                </LenisProvider>
+            </CartProvider>
+        </Provider>
     </React.StrictMode>
 )
