@@ -1,4 +1,5 @@
 import React, {
+    useEffect,
     createContext,
     useCallback,
     useMemo,
@@ -9,6 +10,8 @@ import React, {
 import { PRODUCTS } from '../../data'
 
 export const CartContext = createContext()
+
+const LOCAL_STORAGE = 'myCart'
 
 function CartProvider({ children }) {
     // UI element of cart
@@ -22,7 +25,12 @@ function CartProvider({ children }) {
     // store cart slider state
     const [isCartOpen, setIsCartOpen] = useState(false)
     // store a list of products in cart
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useState(() => {
+        // retrieve cart from localStorage
+        const storedCart = localStorage.getItem(LOCAL_STORAGE)
+        return storedCart ? JSON.parse(storedCart) : []
+    })
+
     // store unique items in cart
     const totalCart = cart.length
     // store total quantity of each items
@@ -84,6 +92,7 @@ function CartProvider({ children }) {
                     )
                 )
             }
+
             // add to cart
             return sortCart([...currentCart, { ...item, quantity: 1 }])
         })
@@ -146,6 +155,9 @@ function CartProvider({ children }) {
         }
     })
 
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE, JSON.stringify(cart))
+    }, [cart])
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }
 
