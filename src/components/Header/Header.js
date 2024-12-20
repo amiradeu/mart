@@ -6,7 +6,7 @@ import { CartContext } from '../CartProvider'
 import SlideUpText from '../SlideUpText'
 
 function Header() {
-    const { totalItems, toggleCart, cartRef, updateCartPosition } =
+    const { totalItems, isCartOpen, openCart, cartRef, updateCartPosition } =
         useContext(CartContext)
 
     useEffect(() => {
@@ -21,7 +21,13 @@ function Header() {
     return (
         <Wrapper>
             <HomeLink to='/'>Sticker Mart</HomeLink>
-            <CartButton onClick={toggleCart} ref={cartRef}>
+            <CartButton
+                onClick={openCart}
+                ref={cartRef}
+                aria-haspopup='true'
+                aria-label='Open Cart'
+                aria-expanded={isCartOpen}
+            >
                 Cart
                 {totalItems !== 0 && (
                     <>

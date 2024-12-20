@@ -29,10 +29,10 @@ root.render(
     <React.StrictMode>
         <Provider>
             <CartProvider>
-                <LenisProvider>
-                    <RouterProvider router={router} />
-                    <GlobalStyles />
-                </LenisProvider>
+                {/* <LenisProvider> */}
+                <RouterProvider router={router} />
+                <GlobalStyles />
+                {/* </LenisProvider> */}
             </CartProvider>
         </Provider>
     </React.StrictMode>
