@@ -1,4 +1,11 @@
-import React, { memo, useContext, useEffect, useRef, useState } from 'react'
+import React, {
+    memo,
+    useContext,
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useState,
+} from 'react'
 import styled, { keyframes } from 'styled-components'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -27,6 +34,15 @@ function CartShelf() {
     useKeydown('Escape', () => {
         closeCart()
     })
+
+    // useEffect(() => {
+    //     console.log('mounting')
+
+    //     return () => {
+    //         console.log('unmounting')
+    //         closeCart()
+    //     }
+    // }, [])
 
     return (
         <ReactFocusLock returnFocus={true}>
@@ -66,7 +82,11 @@ function CartShelf() {
                                     {subtotal}
                                 </TextWrapper>
                             </Total>
-                            <MyCartLink to='/mycart' ref={checkoutRef}>
+                            <MyCartLink
+                                to='/mycart'
+                                ref={checkoutRef}
+                                onClick={closeCart}
+                            >
                                 <span>view cart </span>
                                 <ArrowRight />
                                 <ArrowRight />
