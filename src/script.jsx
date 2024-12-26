@@ -7,8 +7,8 @@ import App from './App'
 import Error from './components/Error'
 import MyCart from './components/MyCart'
 
-import CartProvider from './components/CartProvider'
-
+// Global Components
+import AppProvider from './components/AppProvider'
 import GlobalStyles from './components/GlobalStyles'
 
 const root = createRoot(document.querySelector('#root'))
@@ -26,9 +26,9 @@ const router = createBrowserRouter([
 
 root.render(
     <React.StrictMode>
-        <CartProvider>
+        <AppProvider>
             <RouterProvider router={router} />
             <GlobalStyles />
-        </CartProvider>
+        </AppProvider>
     </React.StrictMode>
 )

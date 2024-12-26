@@ -1,14 +1,25 @@
-import React, { memo, useContext, useRef, useState } from 'react'
+import React, {
+    memo,
+    useContext,
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useState,
+} from 'react'
 import styled, { keyframes } from 'styled-components'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Link } from 'react-router-dom'
 import { X, ArrowRight } from 'react-feather'
+import ReactFocusLock from 'react-focus-lock'
+import { RemoveScroll } from 'react-remove-scroll'
 
 import { CartContext } from '../CartProvider'
 import Cart from '../Cart'
 import { QUERIES } from '../../constants'
 import SlideUpText from '../SlideUpText'
+import useKeydown from '../../hooks/use-keydown'
+import { LenisContext } from '../LenisProvider'
 
 function CartShelf() {
     const asideRef = useRef()
@@ -18,48 +29,75 @@ function CartShelf() {
     const { cart, totalItems, subtotal, isCartOpen, closeCart } =
         useContext(CartContext)
 
+    const { stopLenis, startLenis } = useContext(LenisContext)
+
+    const styles = {
+        '--isCartOpen': isCartOpen,
+    }
+    useKeydown('Escape', () => {
+        closeCart()
+    })
+
+    useEffect(() => {
+        stopLenis()
+
+        return () => {
+            startLenis()
+        }
+    }, [])
+
     return (
-        <Aside ref={asideRef} isCartOpen={isCartOpen}>
-            <Wrapper>
-                <Header>
-                    <Title>My Cart</Title>
-                    <CloseButton ref={closeRef} onClick={closeCart}>
-                        <X size={20} />
-                    </CloseButton>
-                </Header>
-                <Body>
-                    {cart.length === 0 && <p>Your cart is currently empty.</p>}
-                    {cart.map((item, index) => (
-                        <Cart key={index} {...item} />
-                    ))}
-                </Body>
-                <Footer>
-                    <Total>
-                        <p>
-                            Subtotal
-                            {totalItems !== 0 ? (
-                                <>
-                                    &nbsp;(
-                                    {totalItems}
-                                    &nbsp;items)
-                                </>
-                            ) : (
-                                ''
+        <ReactFocusLock returnFocus={true}>
+            <RemoveScroll>
+                <WrapperAside ref={asideRef} style={styles} onClick={closeCart}>
+                    <Backdrop onClick={(e) => e.stopPropagation()}>
+                        <Header>
+                            <Title>My Cart</Title>
+                            <CloseButton ref={closeRef} onClick={closeCart}>
+                                <X size={20} />
+                            </CloseButton>
+                        </Header>
+                        <Body data-lenis-prevent>
+                            {cart.length === 0 && (
+                                <p>Your cart is currently empty.</p>
                             )}
-                        </p>
-                        <TextWrapper>
-                            <div>MYR&nbsp;</div>
-                            {subtotal}
-                        </TextWrapper>
-                    </Total>
-                    <MyCartLink to='/mycart' ref={checkoutRef}>
-                        <span>view cart </span>
-                        <ArrowRight />
-                        <ArrowRight />
-                    </MyCartLink>
-                </Footer>
-            </Wrapper>
-        </Aside>
+                            {cart.map((item, index) => (
+                                <Cart key={index} {...item} />
+                            ))}
+                        </Body>
+                        <Footer>
+                            <Total>
+                                <p>
+                                    Subtotal
+                                    {totalItems !== 0 ? (
+                                        <>
+                                            &nbsp;(
+                                            {totalItems}
+                                            &nbsp;items)
+                                        </>
+                                    ) : (
+                                        ''
+                                    )}
+                                </p>
+                                <TextWrapper>
+                                    <div>MYR&nbsp;</div>
+                                    {subtotal}
+                                </TextWrapper>
+                            </Total>
+                            <MyCartLink
+                                to='/mycart'
+                                ref={checkoutRef}
+                                onClick={closeCart}
+                            >
+                                <span>view cart </span>
+                                <ArrowRight />
+                                <ArrowRight />
+                            </MyCartLink>
+                        </Footer>
+                    </Backdrop>
+                </WrapperAside>
+            </RemoveScroll>
+        </ReactFocusLock>
     )
 }
 
@@ -73,27 +111,29 @@ const slideOut = keyframes`
   to { transform: translateX(100%); }
 `
 
-const Aside = styled.aside`
+const WrapperAside = styled.aside`
     position: fixed;
     top: 0;
     right: 0;
 
     display: flex;
-    width: 480px;
+    justify-content: flex-end;
+    width: 100%;
     height: 100%;
+
+    backdrop-filter: blur(3px);
+
+    animation: ${slideIn} 0.3s forwards;
+`
+
+const Backdrop = styled.div`
+    width: 480px;
 
     background-color: var(--color-background);
 
     @media ${QUERIES.tabletAndDown} {
         width: 90%;
     }
-
-    animation: ${({ isCartOpen }) => (isCartOpen ? slideIn : slideOut)} 0.3s
-        forwards;
-`
-
-const Wrapper = styled.div`
-    width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -138,13 +178,15 @@ const CloseButton = styled.button`
     }
 `
 
-const Body = styled.div`
+const Body = styled.main`
     flex: 1;
 
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
     row-gap: 12px;
+
+    overflow-y: scroll;
+    overscroll-behavior: contain;
 
     padding: 0 16px;
 
@@ -153,7 +195,7 @@ const Body = styled.div`
     }
 `
 
-const Footer = styled.div`
+const Footer = styled.footer`
     border-top: 1px solid black;
     margin-block-end: 16px;
     padding: 0 16px;

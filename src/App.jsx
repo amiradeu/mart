@@ -1,13 +1,14 @@
-import { Provider } from 'react-wrap-balancer'
-
+import { useContext, useEffect } from 'react'
 import Home from './components/Home'
+import { LenisContext } from './components/LenisProvider'
 
 function App() {
-    return (
-        <Provider>
-            <Home />
-        </Provider>
-    )
+    const { scrollToTop } = useContext(LenisContext)
+    useEffect(() => {
+        scrollToTop()
+    }, [])
+
+    return <Home />
 }
 
 export default App
