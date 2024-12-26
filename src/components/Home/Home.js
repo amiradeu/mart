@@ -5,7 +5,7 @@ import Superheader from '../Superheader'
 import Header from '../Header'
 import CategoryFilter from '../CategoryFilter'
 import ProductGrid from '../ProductGrid'
-import CartShelf from '../CartShelf'
+import AsideSlider from '../AsideSlider'
 
 function Home() {
     const [selectedCategory, setSelectedCategory] = useState('ALL')
@@ -24,7 +24,7 @@ function Home() {
                 </Main>
             </ContentWrapper>
             <SliderWrapper>
-                <CartShelf />
+                <AsideSlider />
             </SliderWrapper>
         </Wrapper>
     )
