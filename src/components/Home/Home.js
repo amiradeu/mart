@@ -1,18 +1,14 @@
 import styled from 'styled-components'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 
 import Superheader from '../Superheader'
 import Header from '../Header'
 import CategoryFilter from '../CategoryFilter'
 import ProductGrid from '../ProductGrid'
 import CartShelf from '../CartShelf'
-import { CartContext } from '../CartProvider'
-import LenisProvider from '../LenisProvider'
 
 function Home() {
     const [selectedCategory, setSelectedCategory] = useState('ALL')
-
-    const { isCartOpen } = useContext(CartContext)
 
     return (
         <Wrapper>
@@ -27,7 +23,9 @@ function Home() {
                     <ProductGrid category={selectedCategory} />
                 </Main>
             </ContentWrapper>
-            <SliderWrapper>{isCartOpen && <CartShelf />}</SliderWrapper>
+            <SliderWrapper>
+                <CartShelf />
+            </SliderWrapper>
         </Wrapper>
     )
 }
