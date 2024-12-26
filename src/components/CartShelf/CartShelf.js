@@ -47,8 +47,8 @@ function CartShelf() {
     return (
         <ReactFocusLock returnFocus={true}>
             <RemoveScroll>
-                <Wrapper ref={asideRef} style={styles} onClick={closeCart}>
-                    <Backdrop>
+                <WrapperAside ref={asideRef} style={styles} onClick={closeCart}>
+                    <Backdrop onClick={(e) => e.stopPropagation()}>
                         <Header>
                             <Title>My Cart</Title>
                             <CloseButton ref={closeRef} onClick={closeCart}>
@@ -93,7 +93,7 @@ function CartShelf() {
                             </MyCartLink>
                         </Footer>
                     </Backdrop>
-                </Wrapper>
+                </WrapperAside>
             </RemoveScroll>
         </ReactFocusLock>
     )
@@ -109,7 +109,7 @@ const slideOut = keyframes`
   to { transform: translateX(100%); }
 `
 
-const Wrapper = styled.aside`
+const WrapperAside = styled.aside`
     position: fixed;
     top: 0;
     right: 0;
@@ -176,7 +176,7 @@ const CloseButton = styled.button`
     }
 `
 
-const Body = styled.div`
+const Body = styled.main`
     flex: 1;
 
     display: flex;
@@ -191,7 +191,7 @@ const Body = styled.div`
     }
 `
 
-const Footer = styled.div`
+const Footer = styled.footer`
     border-top: 1px solid black;
     margin-block-end: 16px;
     padding: 0 16px;
