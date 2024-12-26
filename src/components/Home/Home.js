@@ -7,6 +7,7 @@ import CategoryFilter from '../CategoryFilter'
 import ProductGrid from '../ProductGrid'
 import CartShelf from '../CartShelf'
 import { CartContext } from '../CartProvider'
+import LenisProvider from '../LenisProvider'
 
 function Home() {
     const [selectedCategory, setSelectedCategory] = useState('ALL')

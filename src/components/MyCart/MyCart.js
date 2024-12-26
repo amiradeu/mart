@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 
 import Superheader from '../Superheader'
@@ -6,9 +6,15 @@ import Header from '../Header'
 
 import { CartContext } from '../CartProvider'
 import Cart from '../Cart'
+import { LenisContext } from '../LenisProvider'
 
 function MyCart() {
     const { cart, totalItems, subtotal } = useContext(CartContext)
+
+    const { scrollToTop } = useContext(LenisContext)
+    useEffect(() => {
+        scrollToTop()
+    }, [])
 
     return (
         <Wrapper>

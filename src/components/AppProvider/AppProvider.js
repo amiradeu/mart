@@ -7,9 +7,7 @@ function AppProvider({ children }) {
     return (
         <Provider>
             <CartProvider>
-                {/* <LenisProvider> */}
-                {children}
-                {/* </LenisProvider> */}
+                <LenisProvider>{children}</LenisProvider>
             </CartProvider>
         </Provider>
     )

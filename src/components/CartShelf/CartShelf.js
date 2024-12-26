@@ -19,6 +19,8 @@ import Cart from '../Cart'
 import { QUERIES } from '../../constants'
 import SlideUpText from '../SlideUpText'
 import useKeydown from '../../hooks/use-keydown'
+import { useLenis } from 'lenis/react'
+import { LenisContext } from '../LenisProvider'
 
 function CartShelf() {
     const asideRef = useRef()
@@ -28,6 +30,8 @@ function CartShelf() {
     const { cart, totalItems, subtotal, isCartOpen, closeCart } =
         useContext(CartContext)
 
+    const { stopLenis, startLenis } = useContext(LenisContext)
+
     const styles = {
         '--isCartOpen': isCartOpen,
     }
@@ -35,14 +39,15 @@ function CartShelf() {
         closeCart()
     })
 
-    // useEffect(() => {
-    //     console.log('mounting')
+    useEffect(() => {
+        console.log('mounting')
+        stopLenis()
 
-    //     return () => {
-    //         console.log('unmounting')
-    //         closeCart()
-    //     }
-    // }, [])
+        return () => {
+            console.log('unmounting')
+            startLenis()
+        }
+    }, [])
 
     return (
         <ReactFocusLock returnFocus={true}>
