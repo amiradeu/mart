@@ -19,7 +19,6 @@ import Cart from '../Cart'
 import { QUERIES } from '../../constants'
 import SlideUpText from '../SlideUpText'
 import useKeydown from '../../hooks/use-keydown'
-import { useLenis } from 'lenis/react'
 import { LenisContext } from '../LenisProvider'
 
 function CartShelf() {
@@ -40,11 +39,9 @@ function CartShelf() {
     })
 
     useEffect(() => {
-        console.log('mounting')
         stopLenis()
 
         return () => {
-            console.log('unmounting')
             startLenis()
         }
     }, [])
@@ -60,7 +57,7 @@ function CartShelf() {
                                 <X size={20} />
                             </CloseButton>
                         </Header>
-                        <Body>
+                        <Body data-lenis-prevent>
                             {cart.length === 0 && (
                                 <p>Your cart is currently empty.</p>
                             )}
@@ -186,8 +183,10 @@ const Body = styled.main`
 
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
     row-gap: 12px;
+
+    overflow-y: scroll;
+    overscroll-behavior: contain;
 
     padding: 0 16px;
 

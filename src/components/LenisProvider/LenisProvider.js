@@ -7,7 +7,7 @@ function LenisProvider({ children }) {
     const lenisRef = useRef()
 
     const lenis = useLenis((lenis) => {
-        console.log('lenis in callback', lenis)
+        // console.log('lenis in callback', lenis)
     })
 
     const stopLenis = useCallback(() => {
