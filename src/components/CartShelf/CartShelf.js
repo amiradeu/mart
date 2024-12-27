@@ -1,117 +1,63 @@
-import React, {
-    memo,
-    useContext,
-    useEffect,
-    useLayoutEffect,
-    useRef,
-    useState,
-} from 'react'
-import styled, { keyframes } from 'styled-components'
-import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
+import React, { memo, useContext, useRef } from 'react'
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { X, ArrowRight } from 'react-feather'
-import ReactFocusLock from 'react-focus-lock'
-import { RemoveScroll } from 'react-remove-scroll'
 
 import { CartContext } from '../CartProvider'
-import Cart from '../Cart'
+
 import { QUERIES } from '../../constants'
-import SlideUpText from '../SlideUpText'
-import useKeydown from '../../hooks/use-keydown'
-import { LenisContext } from '../LenisProvider'
+import Cart from '../Cart'
 
 function CartShelf() {
-    const asideRef = useRef()
     const closeRef = useRef()
     const checkoutRef = useRef()
 
-    const { cart, totalItems, subtotal, isCartOpen, closeCart } =
-        useContext(CartContext)
-
-    const { stopLenis, startLenis } = useContext(LenisContext)
-
-    const styles = {
-        '--isCartOpen': isCartOpen,
-    }
-    useKeydown('Escape', () => {
-        closeCart()
-    })
-
-    useEffect(() => {
-        stopLenis()
-
-        return () => {
-            startLenis()
-        }
-    }, [])
+    const { cart, totalItems, subtotal, closeCart } = useContext(CartContext)
 
     return (
-        <ReactFocusLock returnFocus={true}>
-            <RemoveScroll>
-                <WrapperAside ref={asideRef} style={styles} onClick={closeCart}>
-                    <Backdrop onClick={(e) => e.stopPropagation()}>
-                        <Header>
-                            <Title>My Cart</Title>
-                            <CloseButton ref={closeRef} onClick={closeCart}>
-                                <X size={20} />
-                            </CloseButton>
-                        </Header>
-                        <Body data-lenis-prevent>
-                            {cart.length === 0 && (
-                                <p>Your cart is currently empty.</p>
-                            )}
-                            {cart.map((item, index) => (
-                                <Cart key={index} {...item} />
-                            ))}
-                        </Body>
-                        <Footer>
-                            <Total>
-                                <p>
-                                    Subtotal
-                                    {totalItems !== 0 ? (
-                                        <>
-                                            &nbsp;(
-                                            {totalItems}
-                                            &nbsp;items)
-                                        </>
-                                    ) : (
-                                        ''
-                                    )}
-                                </p>
-                                <TextWrapper>
-                                    <div>MYR&nbsp;</div>
-                                    {subtotal}
-                                </TextWrapper>
-                            </Total>
-                            <MyCartLink
-                                to='/mycart'
-                                ref={checkoutRef}
-                                onClick={closeCart}
-                            >
-                                <span>view cart </span>
-                                <ArrowRight />
-                                <ArrowRight />
-                            </MyCartLink>
-                        </Footer>
-                    </Backdrop>
-                </WrapperAside>
-            </RemoveScroll>
-        </ReactFocusLock>
+        <Backdrop onClick={(e) => e.stopPropagation()}>
+            <Header>
+                <Title>My Cart</Title>
+                <CloseButton ref={closeRef} onClick={closeCart}>
+                    <X size={20} />
+                </CloseButton>
+            </Header>
+            <Body data-lenis-prevent>
+                {cart.length === 0 && <p>Your cart is currently empty.</p>}
+                {cart.map((item, index) => (
+                    <Cart key={index} {...item} />
+                ))}
+            </Body>
+            <Footer>
+                <Total>
+                    <p>
+                        Subtotal
+                        {totalItems !== 0 ? (
+                            <>
+                                &nbsp;(
+                                {totalItems}
+                                &nbsp;items)
+                            </>
+                        ) : (
+                            ''
+                        )}
+                    </p>
+                    <TextWrapper>
+                        <div>MYR&nbsp;</div>
+                        {subtotal}
+                    </TextWrapper>
+                </Total>
+                <MyCartLink to='/mycart' ref={checkoutRef} onClick={closeCart}>
+                    <span>view cart </span>
+                    <ArrowRight />
+                    <ArrowRight />
+                </MyCartLink>
+            </Footer>
+        </Backdrop>
     )
 }
 
-const slideIn = keyframes`
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
-`
-
-const slideOut = keyframes`
-  from { transform: translateX(0); }
-  to { transform: translateX(100%); }
-`
-
-const WrapperAside = styled.aside`
+const Aside = styled.aside`
     position: fixed;
     top: 0;
     right: 0;
@@ -122,8 +68,6 @@ const WrapperAside = styled.aside`
     height: 100%;
 
     backdrop-filter: blur(3px);
-
-    animation: ${slideIn} 0.3s forwards;
 `
 
 const Backdrop = styled.div`
