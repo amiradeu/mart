@@ -1,7 +1,6 @@
 import React, { memo, useContext, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import ReactFocusLock from 'react-focus-lock'
-import { RemoveScroll } from 'react-remove-scroll'
 import { AnimatePresence, motion } from 'motion/react'
 
 import { CartContext } from '../CartProvider'
@@ -14,44 +13,33 @@ function AsideSlider() {
     const asideRef = useRef()
 
     const { isCartOpen, closeCart } = useContext(CartContext)
-    const { stopLenis, startLenis } = useContext(LenisContext)
 
     useKeydown('Escape', () => {
         closeCart()
     })
 
-    useEffect(() => {
-        stopLenis()
-
-        return () => {
-            startLenis()
-        }
-    }, [])
-
     return (
         <ReactFocusLock returnFocus={true}>
-            <RemoveScroll>
-                <AnimatePresence>
-                    {isCartOpen && (
-                        <Aside
-                            ref={asideRef}
-                            onClick={closeCart}
-                            as={motion.aside}
-                            initial={{
-                                transform: 'translateX(100%)',
-                            }}
-                            animate={{
-                                transform: 'translateX(0%)',
-                            }}
-                            exit={{
-                                transform: 'translateX(100%)',
-                            }}
-                        >
-                            <CartShelf />
-                        </Aside>
-                    )}
-                </AnimatePresence>
-            </RemoveScroll>
+            <AnimatePresence>
+                {isCartOpen && (
+                    <Aside
+                        ref={asideRef}
+                        onClick={closeCart}
+                        as={motion.aside}
+                        initial={{
+                            transform: 'translateX(100%)',
+                        }}
+                        animate={{
+                            transform: 'translateX(0%)',
+                        }}
+                        exit={{
+                            transform: 'translateX(100%)',
+                        }}
+                    >
+                        <CartShelf />
+                    </Aside>
+                )}
+            </AnimatePresence>
         </ReactFocusLock>
     )
 }
