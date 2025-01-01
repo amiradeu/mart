@@ -1,17 +1,25 @@
 import styled from 'styled-components'
-import Superheader from '../Superheader'
-import Header from '../Header'
 import { CartContext } from '../CartProvider'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import Balancer from 'react-wrap-balancer'
+import { Link } from 'react-router-dom'
+import { X } from 'react-feather'
+
+import { LenisContext } from '../LenisProvider'
 
 function Receipt() {
     const { cart, totalItems, subtotal } = useContext(CartContext)
 
+    const { scrollToTop } = useContext(LenisContext)
+    useEffect(() => {
+        scrollToTop()
+    }, [])
+
     return (
-        <Wrapper>
-            <Superheader />
-            <Header showCart={false} />
+        <Wrapper onClick={(e) => e.stopPropagation()}>
+            <ButtonWrapper>
+                <CloseLink to='/'>X</CloseLink>
+            </ButtonWrapper>
             <ReceiptWrapper>
                 <ReceiptContentWrapper>
                     <Top>
@@ -58,8 +66,35 @@ function Receipt() {
 
 const Wrapper = styled.div`
     isolation: isolate;
-    padding-block-start: 50px;
-    padding-block-end: 4rem;
+    min-height: 100%;
+`
+
+const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: end;
+    padding-block-start: 16px;
+    padding-inline-end: 16px;
+`
+const CloseLink = styled(Link)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+
+    background-color: black;
+    border: none;
+    color: white;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--color-gray-100);
+        color: revert;
+    }
 `
 
 const ReceiptWrapper = styled.div`
@@ -82,7 +117,8 @@ const ReceiptContentWrapper = styled.div`
     padding-inline: 16px;
     padding-block: 32px;
 
-    margin-block: 32px;
+    margin-block-start: 16px;
+    margin-block-end: 32px;
     margin-inline: 16px;
 `
 

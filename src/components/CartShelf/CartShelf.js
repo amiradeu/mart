@@ -10,7 +10,6 @@ import Cart from '../Cart'
 
 function CartShelf() {
     const closeRef = useRef()
-    const checkoutRef = useRef()
 
     const { cart, totalItems, subtotal, closeCart } = useContext(CartContext)
 
@@ -47,10 +46,9 @@ function CartShelf() {
                         {subtotal}
                     </TextWrapper>
                 </Total>
-                <MyCartLink to='/mycart' ref={checkoutRef} onClick={closeCart}>
-                    <span>Receipt</span>
-                    <ArrowRight />
-                </MyCartLink>
+                <ReceiptLink to='/mycart' onClick={closeCart}>
+                    <span>Generate Receipt</span>
+                </ReceiptLink>
             </Footer>
         </Backdrop>
     )
@@ -145,7 +143,7 @@ const TextWrapper = styled.div`
     align-items: baseline;
 `
 
-const MyCartLink = styled(Link)`
+const ReceiptLink = styled(Link)`
     align-self: flex-end;
 
     display: flex;
