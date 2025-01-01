@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { CartContext } from '../CartProvider'
 import SlideUpText from '../SlideUpText'
 
-function Header() {
+function Header({ showCart = true }) {
     const { totalItems, isCartOpen, openCart, cartRef, updateCartPosition } =
         useContext(CartContext)
 
@@ -21,20 +21,22 @@ function Header() {
     return (
         <Wrapper>
             <HomeLink to='/'>Sticker Mart</HomeLink>
-            <CartButton
-                onClick={openCart}
-                ref={cartRef}
-                aria-haspopup='true'
-                aria-label='Open Cart'
-                aria-expanded={isCartOpen}
-            >
-                Cart
-                {totalItems !== 0 && (
-                    <>
-                        (<SlideUpText>{totalItems}</SlideUpText>)
-                    </>
-                )}
-            </CartButton>
+            {showCart && (
+                <CartButton
+                    onClick={openCart}
+                    ref={cartRef}
+                    aria-haspopup='true'
+                    aria-label='Open Cart'
+                    aria-expanded={isCartOpen}
+                >
+                    Cart
+                    {totalItems !== 0 && (
+                        <>
+                            (<SlideUpText>{totalItems}</SlideUpText>)
+                        </>
+                    )}
+                </CartButton>
+            )}
         </Wrapper>
     )
 }
@@ -67,6 +69,8 @@ const HomeLink = styled(Link)`
     text-decoration: none;
 
     margin-right: auto;
+
+    padding: 16px 0px;
 `
 
 const CartButton = styled.button`

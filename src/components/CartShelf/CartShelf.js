@@ -48,27 +48,13 @@ function CartShelf() {
                     </TextWrapper>
                 </Total>
                 <MyCartLink to='/mycart' ref={checkoutRef} onClick={closeCart}>
-                    <span>view cart </span>
-                    <ArrowRight />
+                    <span>Receipt</span>
                     <ArrowRight />
                 </MyCartLink>
             </Footer>
         </Backdrop>
     )
 }
-
-const Aside = styled.aside`
-    position: fixed;
-    top: 0;
-    right: 0;
-
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    height: 100%;
-
-    backdrop-filter: blur(3px);
-`
 
 const Backdrop = styled.div`
     width: 480px;
@@ -162,17 +148,18 @@ const TextWrapper = styled.div`
 const MyCartLink = styled(Link)`
     align-self: flex-end;
 
-    display: inline-block;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
 
     width: 100%;
     padding: 8px 0px;
 
-    /* border: 1px solid black; */
+    border: 1px solid black;
     /* border-radius: 2rem; */
 
-    /* background-color: var(--color-secondary); */
+    background-color: var(--color-secondary);
     color: inherit;
 
     text-transform: uppercase;
@@ -184,8 +171,8 @@ const MyCartLink = styled(Link)`
     &:hover,
     &:active {
         text-decoration: underline;
-        background-color: var(--color-gray-100);
-        /* color: white; */
+        background-color: black;
+        color: white;
     }
 `
 

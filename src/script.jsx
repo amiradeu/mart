@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App'
 import Error from './components/Error'
 import MyCart from './components/MyCart'
+import Receipt from './components/Receipt'
 
 // Global Components
 import AppProvider from './components/AppProvider'
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/mycart',
-        element: <MyCart />,
+        element: <Receipt />,
     },
 ])
 

@@ -1,10 +1,9 @@
-import React, { memo, useContext, useEffect, useRef } from 'react'
+import React, { memo, useContext, useRef } from 'react'
 import styled from 'styled-components'
 import ReactFocusLock from 'react-focus-lock'
 import { AnimatePresence, motion } from 'motion/react'
 
 import { CartContext } from '../CartProvider'
-import { LenisContext } from '../LenisProvider'
 import useKeydown from '../../hooks/use-keydown'
 
 import CartShelf from '../CartShelf'
@@ -26,14 +25,19 @@ function AsideSlider() {
                         ref={asideRef}
                         onClick={closeCart}
                         as={motion.aside}
+                        transition={{
+                            duration: 0.5,
+                        }}
                         initial={{
                             transform: 'translateX(100%)',
                         }}
                         animate={{
                             transform: 'translateX(0%)',
+                            opacity: 1,
                         }}
                         exit={{
                             transform: 'translateX(100%)',
+                            opacity: 0,
                         }}
                     >
                         <CartShelf />
@@ -53,8 +57,6 @@ const Aside = styled.aside`
     justify-content: flex-end;
     width: 100%;
     height: 100%;
-
-    backdrop-filter: blur(3px);
 `
 
 export default memo(AsideSlider)
