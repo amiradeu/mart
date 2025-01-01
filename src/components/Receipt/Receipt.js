@@ -1,12 +1,57 @@
 import styled from 'styled-components'
 import Superheader from '../Superheader'
 import Header from '../Header'
+import { CartContext } from '../CartProvider'
+import { useContext } from 'react'
+import Balancer from 'react-wrap-balancer'
 
 function Receipt() {
+    const { cart, totalItems, subtotal } = useContext(CartContext)
+
     return (
         <Wrapper>
             <Superheader />
             <Header showCart={false} />
+            <ReceiptWrapper>
+                <ReceiptContentWrapper>
+                    <Top>
+                        <Title>Receipt</Title>
+                    </Top>
+                    <Content>
+                        <ItemWrapper>
+                            <div>NO.</div>
+                            <ItemName>ITEM</ItemName>
+                            <ItemQty>QTY</ItemQty>
+                            <ItemPrice>PRICE</ItemPrice>
+                        </ItemWrapper>
+
+                        {cart.map((item, index) => (
+                            <ItemWrapper key={index}>
+                                <div>{String(index + 1).padStart(2, '0')}</div>
+
+                                <ItemName>
+                                    <Balancer>
+                                        {item.title} - {item.subtitle}
+                                    </Balancer>
+                                </ItemName>
+
+                                <ItemQty>{item.quantity}</ItemQty>
+                                <ItemPrice>{item.price}</ItemPrice>
+                            </ItemWrapper>
+                        ))}
+                    </Content>
+                    <Footer>
+                        <ItemCount>
+                            <span>Item Count:</span>
+                            <span>{totalItems}</span>
+                        </ItemCount>
+                        <Subtotal>
+                            <span>Subtotal:</span>
+                            <span>MYR {subtotal}</span>
+                        </Subtotal>
+                    </Footer>
+                </ReceiptContentWrapper>
+            </ReceiptWrapper>
         </Wrapper>
     )
 }
@@ -15,6 +60,80 @@ const Wrapper = styled.div`
     isolation: isolate;
     padding-block-start: 50px;
     padding-block-end: 4rem;
+`
+
+const ReceiptWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+`
+
+const ReceiptContentWrapper = styled.div`
+    max-width: 500px;
+    font-family: monospace;
+    text-transform: uppercase;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    border: 1px solid black;
+    padding-inline: 16px;
+    padding-block: 32px;
+
+    margin-block: 32px;
+    margin-inline: 16px;
+`
+
+const Top = styled.header`
+    display: flex;
+    justify-content: center;
+`
+
+const Title = styled.h3`
+    font-weight: 400;
+`
+
+const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+`
+
+const ItemWrapper = styled.div`
+    display: grid;
+    width: 100%;
+
+    grid-template-columns:
+        minmax(44px, 1fr)
+        minmax(100px, 10fr)
+        minmax(40px, 1fr)
+        minmax(60px, 1fr);
+`
+
+const ItemNo = styled.div``
+const ItemName = styled.div``
+const ItemQty = styled.div`
+    justify-self: end;
+`
+const ItemPrice = styled.div`
+    justify-self: end;
+`
+
+const Footer = styled.footer`
+    margin-top: 16px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+`
+
+const ItemCount = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+const Subtotal = styled.div`
+    display: flex;
+    justify-content: space-between;
 `
 
 export default Receipt
