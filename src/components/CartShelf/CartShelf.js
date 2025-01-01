@@ -13,6 +13,15 @@ function CartShelf() {
 
     const { cart, totalItems, subtotal, closeCart } = useContext(CartContext)
 
+    const styles =
+        cart.length === 0
+            ? {
+                  pointerEvents: 'none',
+                  backgroundColor: 'gray',
+                  cursor: 'not-allowed',
+              }
+            : null
+
     return (
         <Backdrop onClick={(e) => e.stopPropagation()}>
             <Header>
@@ -46,7 +55,8 @@ function CartShelf() {
                         {subtotal}
                     </TextWrapper>
                 </Total>
-                <ReceiptLink to='/mycart' onClick={closeCart}>
+
+                <ReceiptLink to='/mycart' onClick={closeCart} style={styles}>
                     <span>Generate Receipt</span>
                 </ReceiptLink>
             </Footer>
