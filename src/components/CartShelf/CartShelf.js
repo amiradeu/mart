@@ -10,9 +10,17 @@ import Cart from '../Cart'
 
 function CartShelf() {
     const closeRef = useRef()
-    const checkoutRef = useRef()
 
     const { cart, totalItems, subtotal, closeCart } = useContext(CartContext)
+
+    const styles =
+        cart.length === 0
+            ? {
+                  pointerEvents: 'none',
+                  backgroundColor: 'gray',
+                  cursor: 'not-allowed',
+              }
+            : null
 
     return (
         <Backdrop onClick={(e) => e.stopPropagation()}>
@@ -47,28 +55,14 @@ function CartShelf() {
                         {subtotal}
                     </TextWrapper>
                 </Total>
-                <MyCartLink to='/mycart' ref={checkoutRef} onClick={closeCart}>
-                    <span>view cart </span>
-                    <ArrowRight />
-                    <ArrowRight />
-                </MyCartLink>
+
+                <ReceiptLink to='/mycart' onClick={closeCart} style={styles}>
+                    <span>Generate Receipt</span>
+                </ReceiptLink>
             </Footer>
         </Backdrop>
     )
 }
-
-const Aside = styled.aside`
-    position: fixed;
-    top: 0;
-    right: 0;
-
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    height: 100%;
-
-    backdrop-filter: blur(3px);
-`
 
 const Backdrop = styled.div`
     width: 480px;
@@ -159,21 +153,22 @@ const TextWrapper = styled.div`
     align-items: baseline;
 `
 
-const MyCartLink = styled(Link)`
+const ReceiptLink = styled(Link)`
     align-self: flex-end;
 
-    display: inline-block;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
 
     width: 100%;
     padding: 8px 0px;
 
-    /* border: 1px solid black; */
+    border: 1px solid black;
     /* border-radius: 2rem; */
 
-    /* background-color: var(--color-secondary); */
-    color: inherit;
+    background-color: black;
+    color: white;
 
     text-transform: uppercase;
     font-size: 1.2rem;
@@ -185,7 +180,7 @@ const MyCartLink = styled(Link)`
     &:active {
         text-decoration: underline;
         background-color: var(--color-gray-100);
-        /* color: white; */
+        color: black;
     }
 `
 
