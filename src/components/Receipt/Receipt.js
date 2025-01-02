@@ -82,7 +82,7 @@ function Receipt() {
                                 </ItemName>
 
                                 <ItemQty>{item.quantity}</ItemQty>
-                                <ItemPrice>{item.price}</ItemPrice>
+                                <ItemPrice>{item.price.toFixed(2)}</ItemPrice>
                             </ItemWrapper>
                         ))}
                     </Content>
@@ -94,7 +94,7 @@ function Receipt() {
                             </FooterWrapper>
                             <FooterWrapper>
                                 <span>Total:</span>
-                                <span>MYR {subtotal}</span>
+                                <span>MYR {subtotal.toFixed(2)}</span>
                             </FooterWrapper>
                         </DashedWrapper>
                         <Instruction>
