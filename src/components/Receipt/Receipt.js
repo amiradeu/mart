@@ -65,14 +65,25 @@ function Receipt() {
                         ))}
                     </Content>
                     <Footer>
-                        <ItemCount>
-                            <span>Item Count:</span>
-                            <span>{totalItems}</span>
-                        </ItemCount>
-                        <Subtotal>
-                            <span>Subtotal:</span>
-                            <span>MYR {subtotal}</span>
-                        </Subtotal>
+                        <DashedWrapper>
+                            <FooterWrapper>
+                                <span>Item Count:</span>
+                                <span>{totalItems}</span>
+                            </FooterWrapper>
+                            <FooterWrapper>
+                                <span>Total:</span>
+                                <span>MYR {subtotal}</span>
+                            </FooterWrapper>
+                        </DashedWrapper>
+                        <Instruction>
+                            Please download the receipt and send it to{' '}
+                            <SocialLink href='https://www.instagram.com/amiradeuraseh/'>
+                                @amiradeuraseh
+                            </SocialLink>{' '}
+                            via DM to confirm your order and make the payment.
+                        </Instruction>
+                        <Ending>Thank you for visiting!</Ending>
+                        <Website>mart.amiradeuraseh.com</Website>
                     </Footer>
                 </ReceiptContentWrapper>
             </ReceiptWrapper>
@@ -83,18 +94,23 @@ function Receipt() {
 const Wrapper = styled.div`
     isolation: isolate;
     min-height: 100%;
+    background-color: var(--color-secondary);
+`
+const DashedWrapper = styled.div`
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
 `
 const DateWrapper = styled.div`
     padding-block-start: 8px;
     align-self: flex-start;
 `
-
 const DownloadButton = styled.button`
     position: absolute;
     top: 0;
     right: 0;
 
     background-color: var(--color-gray-100);
+    color: inherit;
     border: none;
     border-radius: 8px;
     padding: 8px;
@@ -142,7 +158,7 @@ const ReceiptWrapper = styled.div`
 `
 
 const ReceiptContentWrapper = styled.div`
-    max-width: 500px;
+    max-width: 380px;
     font-family: monospace;
     text-transform: uppercase;
 
@@ -158,6 +174,8 @@ const ReceiptContentWrapper = styled.div`
     margin-block-start: 16px;
     margin-block-end: 32px;
     margin-inline: 16px;
+
+    background-color: var(--color-background);
 `
 
 const Top = styled.header`
@@ -204,19 +222,30 @@ const ItemPrice = styled.div`
     justify-self: end;
 `
 
+// FOOTER --------------------------
 const Footer = styled.footer`
-    margin-top: 16px;
-    border-top: 1px dashed black;
-    border-bottom: 1px dashed black;
+    margin-top: 8px;
+`
+const FooterWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+const Instruction = styled.p`
+    margin-block-start: 8px;
+`
+const Ending = styled.p`
+    margin-block-start: 16px;
+    text-align: center;
+`
+const SocialLink = styled.a`
+    color: var(--color-secondary);
+    background-color: black;
+    padding-inline: 2px;
 `
 
-const ItemCount = styled.div`
-    display: flex;
-    justify-content: space-between;
-`
-const Subtotal = styled.div`
-    display: flex;
-    justify-content: space-between;
+const Website = styled.p`
+    text-transform: lowercase;
+    text-align: center;
 `
 
 export default Receipt
