@@ -37,6 +37,7 @@ function Receipt() {
                         <DownloadButton>
                             <Download />
                         </DownloadButton>
+                        <Title>Sticker Mart</Title>
                         <Title>Receipt</Title>
                         <DateWrapper>{today}</DateWrapper>
                     </Top>
@@ -151,7 +152,7 @@ const ReceiptContentWrapper = styled.div`
 
     border: 1px solid black;
     padding-inline: 16px;
-    padding-block-start: 8px;
+    padding-block-start: 32px;
     padding-block-end: 32px;
 
     margin-block-start: 16px;
@@ -163,7 +164,6 @@ const Top = styled.header`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
 
     position: relative;
 `
