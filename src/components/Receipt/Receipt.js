@@ -1,13 +1,17 @@
 import styled from 'styled-components'
 import { CartContext } from '../CartProvider'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import Balancer from 'react-wrap-balancer'
 import { Link } from 'react-router-dom'
 import { X, Download } from 'react-feather'
+import { toPng } from 'html-to-image'
 
 import { LenisContext } from '../LenisProvider'
 
 function Receipt() {
+    const receiptRef = useRef()
+    const downloadRef = useRef()
+
     const { cart, totalItems, subtotal } = useContext(CartContext)
 
     const { scrollToTop } = useContext(LenisContext)
@@ -24,17 +28,36 @@ function Receipt() {
     const date = new Date()
     const today = date.toLocaleDateString('en-US', options)
 
-    const handleDownload = () => {}
+    const handleDownload = async () => {
+        // temporarily hide the download button
+        downloadRef.current.style.visibility = 'hidden'
+
+        try {
+            const dataUrl = await toPng(receiptRef.current, { cacheBust: true })
+            const link = document.createElement('a')
+            link.download = 'stickermart-myorder.png'
+            link.href = dataUrl
+            link.click()
+        } catch (error) {
+            console.log('Failed to generate image:', error)
+        } finally {
+            // show the download button again
+            downloadRef.current.style.visibility = 'visible'
+        }
+    }
 
     return (
         <Wrapper onClick={(e) => e.stopPropagation()}>
-            <ButtonWrapper onClick={handleDownload}>
+            <ButtonWrapper>
                 <CloseLink to='/'>X</CloseLink>
             </ButtonWrapper>
             <ReceiptWrapper>
-                <ReceiptContentWrapper>
+                <ReceiptContentWrapper ref={receiptRef} className='receipt'>
                     <Top>
-                        <DownloadButton>
+                        <DownloadButton
+                            onClick={handleDownload}
+                            ref={downloadRef}
+                        >
                             <Download />
                         </DownloadButton>
                         <Title>Sticker Mart</Title>
@@ -168,6 +191,7 @@ const ReceiptContentWrapper = styled.div`
 
     border: 1px solid black;
     padding-inline: 16px;
+    padding-inline-end: 32px;
     padding-block-start: 32px;
     padding-block-end: 32px;
 
