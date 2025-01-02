@@ -167,8 +167,8 @@ const ReceiptLink = styled(Link)`
     border: 1px solid black;
     /* border-radius: 2rem; */
 
-    background-color: var(--color-secondary);
-    color: inherit;
+    background-color: black;
+    color: white;
 
     text-transform: uppercase;
     font-size: 1.2rem;
@@ -179,8 +179,8 @@ const ReceiptLink = styled(Link)`
     &:hover,
     &:active {
         text-decoration: underline;
-        background-color: black;
-        color: white;
+        background-color: var(--color-gray-100);
+        color: black;
     }
 `
 
