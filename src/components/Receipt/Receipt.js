@@ -89,7 +89,7 @@ function Receipt() {
                     <Footer>
                         <DashedWrapper>
                             <FooterWrapper>
-                                <span>Item Count:</span>
+                                <span>Sticker Count:</span>
                                 <span>{totalItems}</span>
                             </FooterWrapper>
                             <FooterWrapper>
