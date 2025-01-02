@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
 html {
   --color-primary: #262626;
   --color-secondary: #E4FF5F;
+  --color-purple: #D0AAF1;
   --color-red: #c2152f;
   --color-white: #f6f6f6;
   --color-gray-100: rgba(0, 0, 0, 0.015);

@@ -48,9 +48,8 @@ function Receipt() {
 
     return (
         <Wrapper onClick={(e) => e.stopPropagation()}>
-            <ButtonWrapper>
-                <CloseLink to='/'>X</CloseLink>
-            </ButtonWrapper>
+            <CloseLink to='/'>X</CloseLink>
+            <EmptyWrapper />
             <ReceiptWrapper>
                 <ReceiptContentWrapper ref={receiptRef} className='receipt'>
                     <Top>
@@ -110,13 +109,17 @@ function Receipt() {
                     </Footer>
                 </ReceiptContentWrapper>
             </ReceiptWrapper>
+            <EmptyWrapper />
         </Wrapper>
     )
 }
 
+const EmptyWrapper = styled.div`
+    height: 50px;
+`
 const Wrapper = styled.div`
     isolation: isolate;
-    min-height: 100%;
+    min-height: 100vh;
     background-color: var(--color-secondary);
 `
 const DashedWrapper = styled.div`
@@ -144,14 +147,11 @@ const DownloadButton = styled.button`
     }
 `
 
-const ButtonWrapper = styled.div`
-    display: flex;
-    justify-content: end;
-    padding-block-start: 16px;
-    padding-inline-end: 16px;
-`
-
 const CloseLink = styled(Link)`
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -168,7 +168,7 @@ const CloseLink = styled(Link)`
     cursor: pointer;
 
     &:hover {
-        background-color: var(--color-gray-100);
+        background-color: var(--color-purple);
         color: revert;
     }
 `
@@ -181,7 +181,7 @@ const ReceiptWrapper = styled.div`
 `
 
 const ReceiptContentWrapper = styled.div`
-    max-width: 380px;
+    max-width: 320px;
     font-family: monospace;
     text-transform: uppercase;
 
@@ -191,13 +191,7 @@ const ReceiptContentWrapper = styled.div`
 
     border: 1px solid black;
     padding-inline: 16px;
-    padding-inline-end: 32px;
-    padding-block-start: 32px;
-    padding-block-end: 32px;
-
-    margin-block-start: 16px;
-    margin-block-end: 32px;
-    margin-inline: 16px;
+    padding-block: 32px;
 
     background-color: var(--color-background);
 `
