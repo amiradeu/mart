@@ -37,11 +37,6 @@ body {
 }
 
 /* LENIS STYLES */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }

@@ -1,9 +1,7 @@
 import React, { useContext, useRef } from 'react'
 import styled from 'styled-components'
 import Balancer from 'react-wrap-balancer'
-import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { Plus } from 'react-feather'
 
 import { CartContext } from '../CartProvider'
 import { QUERIES } from '../../constants'
@@ -24,20 +22,6 @@ function ProductCard({
 
     const handleClick = contextSafe(() => {
         addToCart({ title, subtitle, image, price, weight })
-
-        // const tl = gsap.timeline()
-        // const { right, y } = circleRef.current.getBoundingClientRect()
-        // // console.log('circle', right, y)
-
-        // tl.set(circleRef.current, {
-        //     opacity: 100,
-        // })
-
-        // tl.to(circleRef.current, {
-        //     x: cartPosition.x - right + 'px',
-        //     y: -y + 'px',
-        //     duration: 2,
-        // })
     })
 
     return (

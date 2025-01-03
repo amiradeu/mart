@@ -8,6 +8,8 @@ function App() {
         scrollToTop()
     }, [])
 
+    console.log('App')
+
     return <Home />
 }
 
