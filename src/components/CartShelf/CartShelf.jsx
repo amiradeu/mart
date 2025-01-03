@@ -1,6 +1,6 @@
 import React, { memo, useContext, useRef } from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { X, ArrowRight } from 'react-feather'
 
 import { CartContext } from '../CartProvider'

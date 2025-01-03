@@ -1,4 +1,4 @@
-import { useRouteError } from 'react-router-dom'
+import { useRouteError } from 'react-router'
 import styled from 'styled-components'
 
 function Error() {
