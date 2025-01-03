@@ -1,11 +1,10 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router'
 
 // Router Pages
 import App from './App'
 import Error from './components/Error'
-import MyCart from './components/MyCart'
 import Receipt from './components/Receipt'
 
 // Global Components

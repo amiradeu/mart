@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { CartContext } from '../CartProvider'
 import SlideUpText from '../SlideUpText'

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { CartContext } from '../CartProvider'
 import { useContext, useEffect, useRef } from 'react'
 import Balancer from 'react-wrap-balancer'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { X, Download } from 'react-feather'
 import { toPng } from 'html-to-image'
 
