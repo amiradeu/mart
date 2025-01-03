@@ -35,7 +35,7 @@
     },
     "devDependencies": {
         "@vitejs/plugin-react": "^4.3.1",
-        "new-component": "5.0.2",
+        "new-component": "^6.0.0",
         "vercel": "^34.2.0",
         "vite": "^5.2.11",
         "vite-plugin-restart": "^0.4.0"
