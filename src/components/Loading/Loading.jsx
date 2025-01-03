@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { LoadingContext } from '../LoadingProvider'
 
-function Loading({ progress = 98 }) {
+function Loading() {
     console.log('Loading')
+    const { progress, startLoading } = useContext(LoadingContext)
+    console.log('progress', progress)
+
+    startLoading()
+
     return (
         <Wrapper>
-            <Loader>loading your experience</Loader>
+            <Loader>Loading your experience...</Loader>
             <Counter>{progress}</Counter>
         </Wrapper>
     )

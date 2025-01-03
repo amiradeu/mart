@@ -7,13 +7,17 @@ import Header from '../Header'
 import { CartContext } from '../CartProvider'
 import Cart from '../Cart'
 import { LenisContext } from '../LenisProvider'
+import { LoadingContext } from '../LoadingProvider'
 
 function MyCart() {
     const { cart, totalItems, subtotal } = useContext(CartContext)
 
     const { scrollToTop } = useContext(LenisContext)
+    const { resetProgress } = useContext(LoadingContext)
+
     useEffect(() => {
         scrollToTop()
+        resetProgress()
     }, [])
 
     return (
