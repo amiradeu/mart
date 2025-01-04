@@ -21,6 +21,10 @@ function useCartLogic() {
         (total, item) => total + item.price * item.quantity,
         0
     )
+    const totalWeight = cart.reduce(
+        (total, item) => total + item.weight * item.quantity,
+        0
+    )
 
     // Function to sort cart based on productsData
     const sortCart = (cart) => {
@@ -103,6 +107,7 @@ function useCartLogic() {
         totalItems,
         subtotal,
         totalCart,
+        totalWeight,
     }
 }
 

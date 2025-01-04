@@ -5,7 +5,7 @@ import { CartContext } from '../CartProvider'
 import { QUERIES } from '../../constants'
 import Balancer from 'react-wrap-balancer'
 
-function Cart({ title, subtitle, quantity, image, price }) {
+function Cart({ title, subtitle, quantity, image, price, weight }) {
     const { deleteFromCart, addQuantity, subtractQuantity } =
         useContext(CartContext)
 
@@ -22,6 +22,7 @@ function Cart({ title, subtitle, quantity, image, price }) {
                 <Balancer>
                     <Subtitle>{subtitle}</Subtitle>
                 </Balancer>
+                <Subtitle>{weight}g</Subtitle>
             </TitleWrapper>
             <QuantityWrapper>
                 <MinusButton onClick={() => subtractQuantity(title)}>

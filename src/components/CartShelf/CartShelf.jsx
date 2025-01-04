@@ -1,7 +1,7 @@
 import React, { memo, useContext, useRef } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router'
-import { X, ArrowRight } from 'react-feather'
+import { X } from 'react-feather'
 
 import { CartContext } from '../CartProvider'
 
@@ -11,7 +11,8 @@ import Cart from '../Cart'
 function CartShelf() {
     const closeRef = useRef()
 
-    const { cart, totalItems, subtotal, closeCart } = useContext(CartContext)
+    const { cart, totalItems, subtotal, totalWeight, closeCart } =
+        useContext(CartContext)
 
     const styles =
         cart.length === 0
@@ -37,6 +38,13 @@ function CartShelf() {
                 ))}
             </Body>
             <Footer>
+                <Total>
+                    <p>Weight</p>
+                    <TextWrapper>
+                        {totalWeight}
+                        <div>&nbsp;g</div>
+                    </TextWrapper>
+                </Total>
                 <Total>
                     <p>
                         Subtotal

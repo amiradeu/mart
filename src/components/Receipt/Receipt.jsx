@@ -12,7 +12,7 @@ function Receipt() {
     const receiptRef = useRef()
     const downloadRef = useRef()
 
-    const { cart, totalItems, subtotal } = useContext(CartContext)
+    const { cart, totalItems, subtotal, totalWeight } = useContext(CartContext)
 
     const { scrollToTop } = useContext(LenisContext)
     useEffect(() => {
@@ -68,6 +68,7 @@ function Receipt() {
                             <div>NO.</div>
                             <ItemName>ITEM</ItemName>
                             <ItemQty>QTY</ItemQty>
+                            <ItemQty>Gram</ItemQty>
                             <ItemPrice>PRICE</ItemPrice>
                         </ItemDashedWrapper>
 
@@ -82,6 +83,7 @@ function Receipt() {
                                 </ItemName>
 
                                 <ItemQty>{item.quantity}</ItemQty>
+                                <ItemQty>{item.weight}</ItemQty>
                                 <ItemPrice>{item.price.toFixed(2)}</ItemPrice>
                             </ItemWrapper>
                         ))}
@@ -93,7 +95,11 @@ function Receipt() {
                                 <span>{totalItems}</span>
                             </FooterWrapper>
                             <FooterWrapper>
-                                <span>Total:</span>
+                                <span>Total Weight:</span>
+                                <span>{totalWeight} g</span>
+                            </FooterWrapper>
+                            <FooterWrapper>
+                                <span>Total Price:</span>
                                 <span>MYR {subtotal.toFixed(2)}</span>
                             </FooterWrapper>
                         </DashedWrapper>
@@ -181,7 +187,7 @@ const ReceiptWrapper = styled.div`
 `
 
 const ReceiptContentWrapper = styled.div`
-    max-width: 320px;
+    max-width: 400px;
     font-family: monospace;
     text-transform: uppercase;
 
@@ -194,6 +200,10 @@ const ReceiptContentWrapper = styled.div`
     padding-block: 32px;
 
     background-color: var(--color-background);
+
+    @media (max-width: 400px) {
+        max-width: 320px;
+    }
 `
 
 const Top = styled.header`
@@ -220,9 +230,10 @@ const ItemWrapper = styled.div`
     width: 100%;
 
     grid-template-columns:
-        minmax(44px, 1fr)
+        minmax(30px, 1fr)
         minmax(100px, 10fr)
-        minmax(40px, 1fr)
+        minmax(44px, 1fr)
+        minmax(44px, 1fr)
         minmax(60px, 1fr);
 `
 
