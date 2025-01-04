@@ -12,7 +12,7 @@ function Receipt() {
     const receiptRef = useRef()
     const downloadRef = useRef()
 
-    const { cart, totalItems, subtotal } = useContext(CartContext)
+    const { cart, totalItems, subtotal, totalWeight } = useContext(CartContext)
 
     const { scrollToTop } = useContext(LenisContext)
     useEffect(() => {
@@ -68,6 +68,7 @@ function Receipt() {
                             <div>NO.</div>
                             <ItemName>ITEM</ItemName>
                             <ItemQty>QTY</ItemQty>
+                            <ItemQty>Gram</ItemQty>
                             <ItemPrice>PRICE</ItemPrice>
                         </ItemDashedWrapper>
 
@@ -82,6 +83,7 @@ function Receipt() {
                                 </ItemName>
 
                                 <ItemQty>{item.quantity}</ItemQty>
+                                <ItemQty>{item.weight}</ItemQty>
                                 <ItemPrice>{item.price.toFixed(2)}</ItemPrice>
                             </ItemWrapper>
                         ))}
@@ -93,7 +95,11 @@ function Receipt() {
                                 <span>{totalItems}</span>
                             </FooterWrapper>
                             <FooterWrapper>
-                                <span>Total:</span>
+                                <span>Total Weight:</span>
+                                <span>{totalWeight} g</span>
+                            </FooterWrapper>
+                            <FooterWrapper>
+                                <span>Total Price:</span>
                                 <span>MYR {subtotal.toFixed(2)}</span>
                             </FooterWrapper>
                         </DashedWrapper>
@@ -222,6 +228,7 @@ const ItemWrapper = styled.div`
     grid-template-columns:
         minmax(44px, 1fr)
         minmax(100px, 10fr)
+        minmax(40px, 1fr)
         minmax(40px, 1fr)
         minmax(60px, 1fr);
 `

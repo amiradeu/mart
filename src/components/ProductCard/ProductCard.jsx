@@ -8,14 +8,22 @@ import { Plus } from 'react-feather'
 import { CartContext } from '../CartProvider'
 import { QUERIES } from '../../constants'
 
-function ProductCard({ title, subtitle, price, image, category, description }) {
+function ProductCard({
+    title,
+    subtitle,
+    price,
+    weight,
+    image,
+    category,
+    description,
+}) {
     const { addToCart, cartPosition } = useContext(CartContext)
     const circleRef = useRef()
 
     const { contextSafe } = useGSAP(() => {})
 
     const handleClick = contextSafe(() => {
-        addToCart({ title, subtitle, image, price })
+        addToCart({ title, subtitle, image, price, weight })
 
         // const tl = gsap.timeline()
         // const { right, y } = circleRef.current.getBoundingClientRect()
@@ -54,7 +62,9 @@ function ProductCard({ title, subtitle, price, image, category, description }) {
                         <Circle ref={circleRef}></Circle>
                     </ButtonWrapper>
                 </SubtitleWrapper>
-                <Price>MYR{price}</Price>
+                <Price>
+                    MYR{price} - {weight}g
+                </Price>
             </BottomWrapper>
         </Wrapper>
     )
