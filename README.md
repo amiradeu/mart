@@ -22,8 +22,8 @@ Stem from my ~~obsession~~ love with collecting tiny cuties for journaling. I wa
 ## Version 1 Look
 
 Home Page: product gallery
-![Home](./docs/v1-home.png)
+![Home](./docs/v1.2-home.png)
 Aside Slider: manage cart
-![Aside](./docs/v1.1-slider.png)
+![Aside](./docs/v1.2-aside.png)
 Checkout Page: view order
-![Checkout](./docs/v1.1-checkout.png)
+![Checkout](./docs/v1.2-checkout.png)
