@@ -187,7 +187,7 @@ const ReceiptWrapper = styled.div`
 `
 
 const ReceiptContentWrapper = styled.div`
-    max-width: 320px;
+    max-width: 400px;
     font-family: monospace;
     text-transform: uppercase;
 
@@ -200,6 +200,10 @@ const ReceiptContentWrapper = styled.div`
     padding-block: 32px;
 
     background-color: var(--color-background);
+
+    @media (max-width: 400px) {
+        max-width: 320px;
+    }
 `
 
 const Top = styled.header`
@@ -226,10 +230,10 @@ const ItemWrapper = styled.div`
     width: 100%;
 
     grid-template-columns:
-        minmax(44px, 1fr)
+        minmax(30px, 1fr)
         minmax(100px, 10fr)
-        minmax(40px, 1fr)
-        minmax(40px, 1fr)
+        minmax(44px, 1fr)
+        minmax(44px, 1fr)
         minmax(60px, 1fr);
 `
 
