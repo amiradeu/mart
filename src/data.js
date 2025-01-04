@@ -63,7 +63,7 @@ export const PRODUCTS = [
         image: 'alpha01',
         category: CATEGORY.ALPHA,
         quantity: 7,
-        description: '',
+        weight: 22,
     },
     {
         title: 'NUM 01',
@@ -72,7 +72,7 @@ export const PRODUCTS = [
         image: 'num01',
         category: CATEGORY.NUM,
         quantity: 6,
-        description: '',
+        weight: 25,
     },
     {
         title: 'NUM 02',
@@ -81,7 +81,7 @@ export const PRODUCTS = [
         image: 'num02',
         category: CATEGORY.NUM,
         quantity: 23,
-        description: '',
+        weight: 27,
     },
     {
         title: 'NUM 03',
@@ -90,7 +90,7 @@ export const PRODUCTS = [
         image: 'num03',
         category: CATEGORY.NUM,
         quantity: 23,
-        description: '',
+        weight: 24,
     },
     {
         title: 'NUM 04',
@@ -99,7 +99,7 @@ export const PRODUCTS = [
         image: 'num04',
         category: CATEGORY.NUM,
         quantity: 22,
-        description: '',
+        weight: 56,
     },
     {
         title: 'NUM 05',
@@ -108,7 +108,7 @@ export const PRODUCTS = [
         image: 'num05',
         category: CATEGORY.NUM,
         quantity: 23,
-        description: '',
+        weight: 113,
     },
     {
         title: 'NUM 6.1',
@@ -117,7 +117,7 @@ export const PRODUCTS = [
         image: 'num06',
         category: CATEGORY.NUM,
         quantity: 10,
-        description: '',
+        weight: 2,
     },
     {
         title: 'NUM 6.2',
@@ -126,7 +126,7 @@ export const PRODUCTS = [
         image: 'num06',
         category: CATEGORY.NUM,
         quantity: 3,
-        description: '',
+        weight: 2,
     },
     {
         title: 'ARROW 01',
@@ -135,7 +135,7 @@ export const PRODUCTS = [
         image: 'arrow01',
         category: CATEGORY.ARROW,
         quantity: 7,
-        description: '',
+        weight: 35,
     },
     {
         title: 'ARROW 02',
@@ -144,7 +144,7 @@ export const PRODUCTS = [
         image: 'arrow02',
         category: CATEGORY.ARROW,
         quantity: 16,
-        description: '',
+        weight: 30,
     },
     {
         title: 'ARROW 03',
@@ -153,7 +153,7 @@ export const PRODUCTS = [
         image: 'arrow03',
         category: CATEGORY.ARROW,
         quantity: 21,
-        description: '',
+        weight: 24,
     },
     {
         title: 'SMILEY 01',
@@ -162,7 +162,7 @@ export const PRODUCTS = [
         image: 'smiley01',
         category: CATEGORY.SMILEY,
         quantity: 24,
-        description: '',
+        weight: 32,
     },
     {
         title: 'SMILEY 02',
@@ -171,7 +171,7 @@ export const PRODUCTS = [
         image: 'smiley02',
         category: CATEGORY.SMILEY,
         quantity: 28,
-        description: '',
+        weight: 37,
     },
     {
         title: 'SMILEY 03',
@@ -180,7 +180,7 @@ export const PRODUCTS = [
         image: 'smiley03',
         category: CATEGORY.SMILEY,
         quantity: 14,
-        description: '',
+        weight: 25,
     },
     {
         title: 'SMILEY 4.1',
@@ -189,7 +189,7 @@ export const PRODUCTS = [
         image: 'smiley04-i',
         category: CATEGORY.SMILEY,
         quantity: 40,
-        description: '',
+        weight: 6,
     },
     {
         title: 'SMILEY 4.2',
@@ -198,7 +198,7 @@ export const PRODUCTS = [
         image: 'smiley04-ii',
         category: CATEGORY.SMILEY,
         quantity: 8,
-        description: '',
+        weight: 3,
     },
     {
         title: 'SMILEY 4.3',
@@ -207,7 +207,7 @@ export const PRODUCTS = [
         image: 'smiley04-iii',
         category: CATEGORY.SMILEY,
         quantity: 7,
-        description: '',
+        weight: 3,
     },
     {
         title: 'SMILEY 4.4',
@@ -216,7 +216,7 @@ export const PRODUCTS = [
         image: 'smiley04-iv',
         category: CATEGORY.SMILEY,
         quantity: 8,
-        description: '',
+        weight: 3,
     },
     {
         title: 'DECO 01',
@@ -225,7 +225,7 @@ export const PRODUCTS = [
         image: 'deco01',
         category: CATEGORY.DECO,
         quantity: 18,
-        description: '',
+        weight: 51,
     },
     {
         title: 'DECO 02',
@@ -234,7 +234,7 @@ export const PRODUCTS = [
         image: 'deco02',
         category: CATEGORY.DECO,
         quantity: 20,
-        description: '',
+        weight: 5,
     },
     {
         title: 'INDEX 01',
@@ -243,7 +243,7 @@ export const PRODUCTS = [
         image: 'index01',
         category: CATEGORY.INDEX,
         quantity: 12,
-        description: '',
+        weight: 38,
     },
     {
         title: 'INDEX 02',
@@ -252,7 +252,7 @@ export const PRODUCTS = [
         image: 'index02',
         category: CATEGORY.INDEX,
         quantity: 6,
-        description: '',
+        weight: 12,
     },
     {
         title: 'LABEL 01',
@@ -261,7 +261,7 @@ export const PRODUCTS = [
         image: 'label01',
         category: CATEGORY.LABEL,
         quantity: 6,
-        description: '',
+        weight: 21,
     },
     {
         title: 'LABEL 02',
@@ -270,6 +270,6 @@ export const PRODUCTS = [
         image: 'label02',
         category: CATEGORY.LABEL,
         quantity: 20,
-        description: '',
+        weight: 10,
     },
 ]
